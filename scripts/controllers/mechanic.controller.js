@@ -15,8 +15,7 @@ module.exports    = {
     Mechanic.find(function(err, mechanics) {
       if (err){
         res.send(err);
-      }
-      else{
+      } else{
         res.json(mechanics);
       }
     });
@@ -29,30 +28,20 @@ module.exports    = {
    * @return {[void]}
    */
   createMechanic: function(req, res) {
-    var mechanic = new Mechanic();    // create a new instance of the Mechanic model
-
-    // set the mechanic name (comes from the request)
-    mechanic.fullname     = req.body.fullname;    
-    mechanic.skill        = req.body.skill; 
-    mechanic.phone_no     = req.body.phone_no; 
-    mechanic.email        = req.body.email;
-    mechanic.organisation = req.body.organisation;
-    mechanic.location     = req.body.location;
-    mechanic.available    = req.body.available;
+    var mechanic = new Mechanic(req.body);    // create a new instance of the Mechanic model
 
     // save the mechanic and check for errors
     mechanic.save(function(err) {
       if (err){
         res.send(err);
-      }
-      else {
+      } else {
         res.json({message: 'Mechanic created!'});
       }
     });
   },
 
   /**
-   * [getMechanicById: Get one Mechanic by unique ID]
+   * [getMechanicById: Retrieves one Mechanic by ID]
    * @param  {[req]}
    * @param  {[res]}
    * @return {[void]}
@@ -61,15 +50,14 @@ module.exports    = {
     Mechanic.findById(req.params.mechanic_id, function(err, mechanic) {
       if (err) {
         res.send(err);
-      }
-      else{
+      } else{
         res.json(mechanic);
       }
     })
   },
 
   /**
-   * [putMechanicById: updates one mechanic info by unique ID]
+   * [putMechanicById: updates one mechanic information by ID]
    * @param  {[req]}
    * @param  {[res]}
    * @return {[void]}
@@ -90,13 +78,13 @@ module.exports    = {
       mechanic.organisation = req.body.organisation;
       mechanic.location     = req.body.location;
       mechanic.available    = req.body.available;
+      mechanic.updated_at   = req.body.updated_at;
 
       // save the mechanic
       mechanic.save(function(err) {
         if (err){
           res.send(err);
-        }
-        else {
+        } else {
           res.json({ message: 'Mechanic updated!'});
         }
       });
@@ -105,7 +93,7 @@ module.exports    = {
   },
 
   /**
-   * [deleteMechanicById: deletes one mechanic by unique ID]
+   * [deleteMechanicById: deletes one mechanic by ID]
    * @param  {[req]}
    * @param  {[res]}
    * @return {[void]}
@@ -116,8 +104,7 @@ module.exports    = {
     }, function(err, mechanic) {
       if (err) {
         res.send(err);
-      }
-      else {
+      } else {
       res.json({ message: 'Successfully deleted' });
       }
     });
