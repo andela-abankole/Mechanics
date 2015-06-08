@@ -3,16 +3,18 @@ var mongoose    = require('mongoose');
 var Schema      = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
-module.exports  = mongoose.model('Admin', new Schema ({
-  username: {
-    type: String,
-    required: "Username is required"
+var adminSchema = new Schema ({
+  username: { 
+    type: String, 
+    require: true, 
+    required: 'Full Name is required', 
+    default: '' 
   },
-
-  password: {
-    type: String,
-    required: "Password is required"
+  password: { 
+    type: String, 
+    required: 'password is required'
   },
+  admin: Boolean,
+});
 
-  admin: Boolean
-}));
+module.exports = mongoose.model('Admin', adminSchema)
