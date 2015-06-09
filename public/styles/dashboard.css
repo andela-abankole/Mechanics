@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  box-shadow: none;
+  background-color: #2D2D2D;
+  border-bottom: 2px solid #ffd777;
+}
+
+nav .nav-wrapper a {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.sidebar {
+  background-color: #424a5d;
+  position: fixed;
+  margin: 0;
+  left: 0;
+  border-radius: 0px;
+  height: 100%;
+}
+
+.maincontent {
+  margin: 0 auto;
+  left: 0;
+  
+}
+
+.profile_image {
+  display: block;
+  width: 100px;
+  height: auto;
+  margin: 40px auto;
+}
+
+.title {
+  display: block;
+  text-align: center;
+  color: #f2f2f2;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+}
+
+.collapsible {
+  margin-top: 60px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding: 10px;
+}
+
+.collapsible-header {
+  background-color: transparent;
+  border-bottom: none;
+  color: #fff;
+}
