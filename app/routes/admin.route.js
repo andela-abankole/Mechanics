@@ -2,7 +2,7 @@ var express     = require('express');
 var router      = express.Router();
 var Admin_Ctrl  = require('../controllers/admin.controller')
 var jwt         = require('jsonwebtoken');  // used to create, sign, and verify tokens
-var config      = require('../../config');      // get our config file
+var config      = require('../../config/config');      // get our config file
 var verifyToken = require('../verifyToken');
 
 module.exports  = function (router) {
