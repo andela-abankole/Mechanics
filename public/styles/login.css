@@ -1,4 +1,4 @@
-oa/* Import fonts */
+/* Import fonts */
 @import url('http://fonts.googleapis.com/css?family=Ruda:400,700,900');
 
 body {
@@ -15,8 +15,9 @@ body {
 }
 
 .login_card {
-  border-radius: 6px;
-  background-color: #eceff1;
+  border-radius: 6px;  
+  background-color: rgba(10, 10, 10, 0.51);
+  color: #fff;
 }
 
 .login_card_title {
@@ -43,7 +44,7 @@ body {
 }
 
 .card-action {
-  color: #797979;
+  color: #fff;
   font-family: Ruda;
 }
 
@@ -58,7 +59,7 @@ body {
 }
 
 .card-action h6 a {
-  color: #263238  !important;
+  color: #DBDBDB  !important;
   font-weight: bolder;
 }
 

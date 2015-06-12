@@ -1,0 +1,114 @@
+.landing-nav {
+  position: fixed;
+  z-index: 1000;
+  display: inline-table;
+/*  background: url('../images/black-bg.jpg');
+*/
+  background-color: rgba(255, 255, 255, .9);}
+
+.landing-nav .brand-logo {
+  position: relative;
+  padding: 15px;
+  left: 70px;
+  color: #000;
+}
+
+.logo {
+  height: auto;
+  width: 55px;
+  margin-right: 14px;
+}
+
+.logo-title {
+  position: absolute;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+input[type=text].landing-search {
+  float: right;
+  width: 30%;
+  margin: 20px 20px 15px 0;
+  color: #000;
+}
+
+@media only screen and (max-width: 992px) {
+  .landing-nav .brand-logo {
+    left: 40px;
+  }
+
+  input[type=text].landing-search {
+    width: 80%;
+    margin: -5px 15px 15px 0;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  input[type=text].landing-search {
+    width: 35%;
+    margin: 15px 10px 15px 0;
+  }
+}
+
+.landing-nav .logo-title:after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 50px;
+  top: -5px;
+  border-bottom: 8px solid;
+  border-radius: 1px;
+}
+
+
+.landing-main_card {
+  position: relative;
+  margin-top: 9em;
+}
+
+.side-card-wrap {
+  top: 12em;
+  position: fixed;
+}
+
+.landing-btn {
+  display: inline-table;
+  margin-bottom: 18px;
+  right: 2px;
+}
+
+#main {
+  height: 600px;
+}
+/*
+@media only screen and (max-width: 1280px) and (min-width: 1024px) {
+  .wrap {
+    width: 80%;
+  }
+}
+
+.wrap {
+  width: 80%;
+  margin: 0 auto;
+}
+*/
+img.tiles{
+  height: auto;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  float: right;
+}
+
+.landing-collection {
+  border: none;
+}
+
+.landing-collection .landing-collection-item {
+  border-bottom: 1px solid #e0e0e0 !important;
+  height: 300px !important;
+}
+
+.junk {
+  color: transparent;
+}

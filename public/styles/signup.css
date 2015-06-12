@@ -16,7 +16,8 @@ body {
 
 .signup_card {
   border-radius: 6px;
-  background-color: #eceff1;
+  background-color: rgba(10, 10, 10, 0.51);
+  color: #fff;
 }
 
 .signup_card_title {
@@ -47,8 +48,8 @@ body {
 }
 
 [type="checkbox"]:checked+label:before {
-  border-right: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 
 [type="checkbox"]+label {
