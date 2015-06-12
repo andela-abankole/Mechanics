@@ -3,18 +3,16 @@ var mongoose        = require('mongoose');
 var Schema          = mongoose.Schema;
 var bcrypt          = require('bcrypt-nodejs');
 
+var validateEmail = function(email) {
+ var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+ return re.test(email);
+};
+
 // set up a mongoose model and pass it using module.exports
 var adminSchema = new Schema ({
   fullname:  { 
     type: String, 
     require: true, 
-    required: 'Full Name is required', 
-    default: '' 
-  },
-  username: { 
-    type: String, 
-    require: true, 
-    unique: true,
     required: 'Full Name is required', 
     default: '' 
   },
@@ -26,6 +24,13 @@ var adminSchema = new Schema ({
        required: 'Email address is required',
        validate: [validateEmail, 'Please fill a valid email address'],
        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+  },
+  username: { 
+    type: String, 
+    require: true, 
+    unique: true,
+    required: 'Full Name is required', 
+    default: '' 
   },
   password: { 
     type: String, 
