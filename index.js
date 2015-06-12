@@ -18,19 +18,21 @@ var port            = process.env.PORT || 3000;  // set port
 
 
 // CONFIGURATION =================================================================
-mongoose.connect(config.database);   // connect to database
 
-// set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));                 
+app.use(morgan('dev'));
 
 // configure app to sue bodyParser() this will get data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));  // parse application/vnd.api+json as json
-app.use(morgan('dev'));
+
+mongoose.connect(config.database);   // connect to database
 
 app.use(methodOverride());
 
+// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/public'));                 
+
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));  // parse application/vnd.api+json as json
 
 // ROUTES =========================================================================
 var router = express.Router(); // get an instance of the express Router
