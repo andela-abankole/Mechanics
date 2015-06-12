@@ -35,7 +35,15 @@ module.exports    = {
       if (err){
         res.send(err);
       } else {
-        res.json({message: 'Mechanic created!'});
+        //res.json({message: 'Mechanic created!'});
+        Mechanic.find(function(err, mechanics) {
+          if (err) {
+            res.send(err)
+          }
+          else {
+            res.status('Mechanic created successfully!').json(mechanics);
+          }
+        })
       }
     });
   },
@@ -105,9 +113,16 @@ module.exports    = {
       if (err) {
         res.send(err);
       } else {
-      res.json({ message: 'Successfully deleted' });
+      //res.json({ message: 'Successfully deleted' })
+        Mechanic.find(function(err, mechanics) {
+          if (err) {
+            res.send(err)
+          }
+          else {
+            res.status('Successfully deleted').json( mechanics);
+          }
+        });
       }
     });
   }
-
 };

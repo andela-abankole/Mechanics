@@ -1,6 +1,6 @@
 var Admin      = require('../models/admin.model');
 var jwt        = require('jsonwebtoken');  // used to create, sign, and verify tokens
-var config     = require('../../config');      // get our config file
+var config     = require('../../config/config');      // get our config file
 
 
 module.exports = {
@@ -25,7 +25,6 @@ module.exports = {
           message: 'Admin saved successfully!',
         });
       };
-      next();
     });
   },
 
@@ -63,7 +62,8 @@ module.exports = {
             res.json({
               success: true,
               message: 'Enjoy your token!',
-              token: token
+              token: token,
+              adminid: admin
             });
           };
         };
