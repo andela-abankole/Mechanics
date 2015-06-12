@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Mechanic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="">
+
+  <title>Mechanics | Meet Mechanics</title>
+
+
+  <!-- IMPORT MATERIALIZE STYLES -->
+  <link rel="stylesheet" type="text/css" href="libs/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+
+  <!-- STYLES -->
+  <link rel="stylesheet" type="text/css" href="styles/landing.css">
+  <link rel="stylesheet" type="text/css" href="styles/dashboard.css">
+
+</head>
+<body>
+  <div ui-view></div> 
+
+  <!-- IMPORT JQUERY AND MATERIALIZE SCRIPTS -->
+  <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="libs/materialize/dist/js/materialize.min.js"></script>
+
+  <!-- ANGULAR JS -->
+  <script type="text/javascript" src="libs/angularjs/angular.js"></script>
+
+  <!-- ANGULAR UI ROUTER -->
+  <script type="text/javascript" src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  <!-- MAIN -->
+  <script type="text/javascript" src="scripts/app.js"></script>
+
+  <!-- CONTROLLERS -->
+  <script type="text/javascript" src="scripts/controllers/admin.controller.js"></script>
+  <script type="text/javascript" src="scripts/controllers/mechanic.controller.js"></script>
+  <script type="text/javascript" src="scripts/controllers/logout.controller.js"></script>
+
+  <!-- SERVICES -->
+  <script type="text/javascript" src="scripts/services/mechanic.service.js"></script>
+  <script type="text/javascript" src="scripts/services/admin.service.js"></script>
+</body>
+</html>
