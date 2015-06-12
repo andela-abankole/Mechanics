@@ -1,0 +1,17 @@
+<!-- NAVBAR FOR DASHBOARD-->
+<nav class="dashboard grey darken-3">
+  <div class="nav-wrapper">
+    <ul class="left">
+      <li><a href="#"><i class="mdi-navigation-more-vert" id="togglebtn"></i></a></li>
+      <li><a ui-sref="dashboard"><i class="mdi-navigation-refresh"></i></a></li>
+    </ul>
+    <a ui-sref="#" class="left nav-brand-logo">MECHANICS | DASHBOARD</a>
+    <div>
+      <div class="right">
+        <button class="waves-effect btn logout-btn"><a ui-sref="logout"> Logout</a></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div ui-view="theView"></div>

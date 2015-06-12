@@ -1,0 +1,57 @@
+<!-- CONTROLLER -->
+<div ng-controller="mechanicController">
+
+  <!-- CONTAINER  -->
+  <div class="row">
+    <!-- SIDE PANEL -->
+    <div class="col s12 m4 l3 toggle"> 
+      <div class="card-panel sidebar">
+        <img src="images/a0.jpg" alt="" class="profile_image">
+        <span class="title_name">Min Li Lang</span>
+        <hr />
+        <ul class="collapsible cc" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-action-dashboard"></i><a ui-sref="dashboard">Dashboard</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-action-account-child"></i><a ui-sref="administrator">Administrators</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header active"><i class="mdi-social-people"></i><a ui-sref="#">Mechanics</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic">Add Mechanic</a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MAIN PANEL -->
+    <div class="col s12 m8 l9 maincontent"> 
+      <div id="maincontent_wrapper">
+        <h3>All Mechanic</h3>
+        <ul class="collection allmechanic_list">
+          <!-- LOOPING THROUGH DATA-->
+          <li ng-repeat="mechanic in data" class="collection-item avatar">
+            <img src="images/a0.jpg" alt="" class="profile_pic_mechanic circle">
+            <div class="mechanic_details_container" ng-cloak>
+              <span class="profile_info_mechanic">{{ mechanic.fullname}}</span>
+              <hr />
+              <p><i class="mdi-communication-email mechanic_details_icon"></i> {{ mechanic.email }}</p>
+              <p><i class="mdi-action-wallet-travel mechanic_details_icon"></i>{{ mechanic.skill }}</p>
+              <p><i class="mdi-communication-call mechanic_details_icon"></i> {{ mechanic.phone_no }}</p>
+              <p><i class="mdi-communication-business mechanic_details_icon"></i> {{ mechanic.organisation }}</p>
+              <p><i class="mdi-action-language mechanic_details_icon"></i> {{ mechanic.location }}</p>
+              <p><i class="mdi-action-event mechanic_details_icon"></i> {{ mechanic.available }}</p>
+              <p><i class="mdi-editor-mode-edit mechanic_details_icon"></i> {{ mechanic.created_at | date:'medium' }}</p>
+              <a href="#!" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- SCRIPT -->
+  <script type="text/javascript" src="scripts/togglenav.js"></script>

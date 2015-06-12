@@ -1,0 +1,38 @@
+<!-- STYLE -->
+<link rel="stylesheet" type="text/css" href="styles/login.css">
+
+<!-- CONTROLLER -->
+<div ng-controller="adminController">
+  <!-- CONTAINER -->
+  <div class="container">
+    <div class="row">
+      <div class="col l3 m2 adjust-side">..</div>
+      <!-- FORM -->
+      <form ng-submit="login(params)" class="col l6 m8 s12 login_form">
+        <div class="card login_card">
+          <h2 class="login_card_title blue-grey darken-1">ADMIN: SIGN IN NOW!</h2>
+            <div class="row">
+              <div class="login_input_field"> 
+                <div class="input-field col s6">
+                  <input id="username" type="text" required ng-model="params.username">
+                  <label for="username">Username</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" type="password" required ng-model="params.password">
+                  <label for="password">Password</label>
+                </div>
+                <button class="waves-effect blue-grey darken-1 btn login_btn"><i class="mdi-action-lock-outline"></i>  SIGN IN</button>
+              </div>
+            </div>
+
+            <div class="card-action">
+              <h5>Don't have an account yet?</h5>
+              <h6><a ui-sref="signup">Join Us</a></h6>
+            </div>
+          </div>
+      </form>
+      {{ params }}
+      <div class="col l3 m2 "></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<!-- CONTROLLER -->
+<div ng-controller="adminController">
+
+  <!-- PAGE LAYOUT  -->
+  <div class="row">
+    <div class="col s12 m4 l3 toggle"> 
+      <!-- SIDE PANEL -->
+      <div class="card-panel sidebar">
+        <img src="images/a0.jpg" alt="" class="profile_image">
+        <span class="title_name">Min Li Lang</span>
+        <hr />
+        <ul class="collapsible cc" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-action-dashboard"></i><a ui-sref="dashboard">Dashboard</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-action-account-child"></i><a ui-sref="administrator">Administrators</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-people"></i><a ui-sref="mechanics">Mechanics</a></div>
+          </li>
+          <li class="active">
+            <div class="collapsible-header cc_header active"><i class="mdi-social-person-add"></i><a href="#">Add Mechanic</a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col s12 m8 l9 maincontent"> 
+      <div id="maincontent_wrapper">
+        <h3>Add Mechanic</h3>
+        <!-- FORM -->
+        <form ng-submit="createMechanic(params)" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-action-account-circle prefix"></i>
+              <input id="fullname" type="text" required ng-model="params.fullname">
+              <label for="fullname">Full Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="mdi-action-wallet-travel prefix"></i>
+              <input id="skill" type="text" required ng-model="params.skill">
+              <label for="skill">What Can You Do</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="mdi-communication-call prefix"></i>
+              <input id="phone" type="text"  required ng-model="params.phone_no">
+              <label for="phone">Phone Number | ex. 08029000000</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="mdi-communication-email prefix"></i>
+              <input id="email" type="email" required ng-model="params.email">
+              <label for="email">Email Address | example@gmail.com</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="mdi-social-domain prefix"></i>
+              <input id="organisation" type="text" ng-model="params.organisation">
+              <label for="organisation">Company | ex. M&M</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="file-field input-field">
+              <input class="file-path validate" type="text"/>
+              <div style="margin-left: 10px; padding: 2px 18px;" class="btn blue-grey">
+                <span>IMAGE</span>
+                <input type="file" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s10">
+              <i class="mdi-action-language prefix"></i>
+              <input id="location" type="text" ng-model="params.location">
+              <label for="location">Address</label>
+            </div>
+            <p class="input-field col s2">
+              <input type="checkbox" id="available" ng-model="params.available" />
+              <label for="available">Availabe</label>
+            </p>
+          </div>
+          <button class="right btn-floating btn-large waves-effect waves-light blue-grey"><i class="mdi-content-add"></i> </button>
+        </form>
+        {{params}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script type="text/javascript" src="scripts/togglenav.js"></script>

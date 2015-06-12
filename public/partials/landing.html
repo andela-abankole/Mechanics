@@ -1,0 +1,58 @@
+<!-- CONTROLLER -->
+<div ng-controller="mechanicController">
+  <!-- NAVBAR -->
+  <nav class="landing-nav">
+   <div class="landing-nav-wrapper">
+    <a href="#" class="brand-logo"><img class="logo" src="images/logo.jpeg"><span class="logo-title">Mechanics</span></a>
+    <!-- SEARCH FIELD -->
+    <input style="display: none" type="text" id="searchinput" placeholder="Search for mechanic" class="landing-search" />
+  </div>
+</nav>
+
+<div class="row">
+  <div id="main">
+    <!-- SIDE PANEL -->
+    <div class="col s2 m3 l3">
+      <div class="col s12 m7 l7 junk">
+        ..
+      </div>
+      <!-- BUTTONS -->
+      <div class="col s12 m5 l5">
+        <div class="side-card-wrap">
+          <!-- MECHANIC BUTTON -->
+          <button id="activemechanics" class="landing-btn right btn-floating btn-large waves-effect waves-light blue-grey"><i class="mdi-social-people"></i> </button>
+          <br />
+          <!-- SEARCH BUTTON -->
+          <button id="activesearch" class="landing-btn right btn-floating btn-large waves-effect waves-light blue-grey"><i class="mdi-action-search"></i> </button>
+        </div>
+      </div>
+    </div>
+    <!-- MAIN PANEL -->
+    <div class="col s9 m7 l6 landing-main_card">
+      <div class="wrap">
+        <div>
+          <ul id="mechcollection" class="collection landing-collection">
+            <li ng-repeat="mechanic in data" class="collection-item landing-collection-item">
+              <img src="images/a3.jpg" alt="" class="tiles">
+              <div class="" ng-cloak>
+                <p>{{ mechanic.fullname}}</p>
+                <p>{{ mechanic.email }}</p>
+                <p>{{ mechanic.skill }}</p>
+                <p>{{ mechanic.phone_no }}</p>
+                <p>{{ mechanic.organisation }}</p>
+                <p>{{ mechanic.location }}</p>
+                <p>{{ mechanic.available }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col s1 m2 l3">
+
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script type="text/javascript" src="scripts/selectbtn.js"></script>

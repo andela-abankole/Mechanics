@@ -1,0 +1,44 @@
+<div ng-controller="adminController">
+  <!-- PAGE LAYOUT -->
+  <div class="row">
+    <!-- SIDE PANEL -->
+    <div class="col s12 m4 l3 toggle"> 
+      <div class="card-panel sidebar">
+        <img src="images/a0.jpg" alt="" class="profile_image">
+        <span class="title_name"></span>
+        <hr />
+        <ul class="collapsible cc" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header active cc_header"><i class="mdi-action-dashboard"></i><a ui-sref="#">Dashboard</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-action-account-child"></i><a ui-sref="administrator">Administrators</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-people"></i><a ui-sref="mechanics">Mechanics</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic">Add Mechanic</a></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MAIN PANEL -->
+    <div class="col s12 m8 l9 maincontent"> 
+      <div id="maincontent_wrapper">
+        <div class="col s12 m112 l12 ds">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script type="text/javascript" src="scripts/togglenav.js"></script>
