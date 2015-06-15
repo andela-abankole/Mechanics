@@ -3,9 +3,9 @@
   <!-- NAVBAR -->
   <nav class="landing-nav">
    <div class="landing-nav-wrapper">
-    <a href="#" class="brand-logo"><img class="logo" src="images/logo.jpeg"><span class="logo-title">Mechanics</span></a>
+    <a ui-sref="home" class="brand-logo"><img class="logo" src="images/logo.jpeg"><span class="logo-title">Mechanics</span></a>
     <!-- SEARCH FIELD -->
-    <input style="display: none" type="text" id="searchinput" placeholder="Search for mechanic" class="landing-search" />
+    <b><input style="display: none" type="text" id="searchinput" placeholder="Search for mechanic" class="landing-search" ng-model="search.fullname"/></b>
   </div>
 </nav>
 
@@ -20,10 +20,10 @@
       <div class="col s12 m5 l5">
         <div class="side-card-wrap">
           <!-- MECHANIC BUTTON -->
-          <button id="activemechanics" class="landing-btn right btn-floating btn-large waves-effect waves-light blue-grey"><i class="mdi-social-people"></i> </button>
+          <button id="activemechanics" class="landing-btn right btn-floating btn-large waves-effect waves-light blue-grey lighten-1 tooltipped" data-position="right" data-tooltip="All Mechanic"><i class="mdi-social-people"></i></button>
           <br />
           <!-- SEARCH BUTTON -->
-          <button id="activesearch" class="landing-btn right btn-floating btn-large waves-effect waves-light blue-grey"><i class="mdi-action-search"></i> </button>
+          <button id="activesearch" class="landing-btn right btn-floating btn-large waves-effect waves-light blue-grey lighten-1 tooltipped" data-position="right" data-tooltip="Search Mechanic"><i class="mdi-action-search"></i> </button>
         </div>
       </div>
     </div>
@@ -33,21 +33,45 @@
         <div>
           <ul id="mechcollection" class="collection landing-collection">
             <li ng-repeat="mechanic in data" class="collection-item landing-collection-item">
-              <img src="images/a3.jpg" alt="" class="tiles">
+              <img class="tiles materialboxed" width="300" src="images/a3.jpg" data-caption="Materialize Demo" alt="">
               <div class="" ng-cloak>
-                <p>{{ mechanic.fullname}}</p>
-                <p>{{ mechanic.email }}</p>
-                <p>{{ mechanic.skill }}</p>
-                <p>{{ mechanic.phone_no }}</p>
-                <p>{{ mechanic.organisation }}</p>
-                <p>{{ mechanic.location }}</p>
-                <p>{{ mechanic.available }}</p>
+                <p class="mechanic-fullname">{{ mechanic.fullname}}</p>
+                <p class="mechanic-email">{{ mechanic.email }}</p>
+                <p class="mechanic-skill">{{ mechanic.skill }}</p>
+                <p class="mechanic-phone">{{ mechanic.phone_no }}<span><a href="tel:{{ mechanic.phone_no}}"><i class="mdi-communication-call"></i> call</a></span></p>
+                <p class="mechanic-org">{{ mechanic.organisation }}</p>
+                <p class="mechanic-address">{{ mechanic.location }}</p>
+                <p class="mechanic-avail">{{ mechanic.available }}</p>
               </div>
             </li>
+            <p>© Andela 2015, Made with <i style="color: #F65A5B" class="mdi-action-favorite"></i> by Akinjide Bankole</p>
           </ul>
         </div>
       </div>
     </div>
+
+    <div style="display:none" id="searchmechcollection" class="col s9 m7 l6 landing-main_card">
+      <div class="wrap">
+        <div>
+          <ul class="collection landing-collection">
+            <li ng-repeat="mechanic in data | filter: search" class="collection-item landing-collection-item">
+              <img class="tiles materialboxed" width="300" src="images/a3.jpg" data-caption="Materialize Demo" alt="">
+              <div class="" ng-cloak>
+                <p class="mechanic-fullname">{{ mechanic.fullname}}</p>
+                <p class="mechanic-email">{{ mechanic.email }}</p>
+                <p class="mechanic-skill">{{ mechanic.skill }}</p>
+                <p class="mechanic-phone">{{ mechanic.phone_no }}<span><a href="tel:{{ mechanic.phone_no}}"><i class="mdi-communication-call"></i> call</a></span></p>
+                <p class="mechanic-org">{{ mechanic.organisation }}</p>
+                <p class="mechanic-address">{{ mechanic.location }}</p>
+                <p class="mechanic-avail">{{ mechanic.available }}</p>
+              </div>
+            </li>
+            <p>© Andela 2015, Made with <i style="color: #F65A5B" class="mdi-action-favorite"></i> by Akinjide Bankole</p>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="col s1 m2 l3">
 
     </div>
@@ -56,3 +80,4 @@
 
 <!-- SCRIPT -->
 <script type="text/javascript" src="scripts/selectbtn.js"></script>
+<script type="text/javascript" src="scripts/image.js"></script>

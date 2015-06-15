@@ -3,9 +3,10 @@
   <div class="row">
     <!-- SIDE PANEL -->
     <div class="col s12 m4 l3 toggle"> 
-      <div class="card-panel sidebar">
-        <img src="images/a0.jpg" alt="" class="profile_image">
-        <span class="title_name"></span>
+      <div class="card-panel sidebar" ng-cloak>
+          <img src="images/a0.jpg" alt="" class="profile_image">
+          <span class="title_name">{{ getadminByid.fullname }}</span>
+          <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -27,13 +28,47 @@
     <!-- MAIN PANEL -->
     <div class="col s12 m8 l9 maincontent"> 
       <div id="maincontent_wrapper">
-        <div class="col s12 m112 l12 ds">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="col s12 m12 l12 ds">
+          <div class="col s12 m4 l4">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/port03.jpg">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Mechanic | Developers<i class="mdi-navigation-more-vert right"></i></span>
+                <p><a href="http://twitter.com/">Visit Twitter Page</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Mechanic | Developers<i class="mdi-navigation-close right"></i></span>
+                <p>Welcome ......</p>
+                <p>We save lives everyday with this app so, please make sure you do something today before you leave this dashboard</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4 l4">
+            <div class="card">
+              <div class="card-image white-text">
+                <img class="activator" src="images/port04.jpg">
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4 l4">
+            <div class="card grey">
+              <div class="card-content white-text">
+                <p class="admintotal">+ {{ data.length }}</p>
+                <i class="mdi-action-account-child admintotalicon"></i>
+                <p>{{ data.length }} Admins are currently working with us</p>
+              </div>
+            </div>
+            <div class="card grey lighten-4 mechanic-dashboard">
+              <div class="card-content">
+                <span>Mechanics</span>
+                <p><i class="mdi-navigation-refresh"></i> Please wait while I populate</p>
+                <img class="mechanicicon" src="images/wrench.png">
+                <p>Populating the number of mechanics registered with us</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

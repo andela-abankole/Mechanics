@@ -1,13 +1,14 @@
 <!-- CONTROLLER -->
-<div ng-controller="mechanicController">
-
+<div ng-controller="adminController">
+  <div ng-controller="mechanicController">
   <!-- CONTAINER  -->
   <div class="row">
     <!-- SIDE PANEL -->
     <div class="col s12 m4 l3 toggle"> 
-      <div class="card-panel sidebar">
-        <img src="images/a0.jpg" alt="" class="profile_image">
-        <span class="title_name">Min Li Lang</span>
+      <div class="card-panel sidebar" ng-cloak>
+          <img src="images/a0.jpg" alt="" class="profile_image">
+          <span class="title_name">{{ getadminByid.fullname }}</span>
+          <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -29,27 +30,30 @@
     <!-- MAIN PANEL -->
     <div class="col s12 m8 l9 maincontent"> 
       <div id="maincontent_wrapper">
-        <h3>All Mechanic</h3>
-        <ul class="collection allmechanic_list">
+        <div class="header-container">
+          <h3>All Mechanic</h3>
+          <div class="total">{{ data.length  }}</div>
+          <input type="text" placeholder="search for......" class="searchlistmechanics" ng-model="search.fullname"/>
+        </div>
+        <ul class="collection">
           <!-- LOOPING THROUGH DATA-->
-          <li ng-repeat="mechanic in data" class="collection-item avatar">
-            <img src="images/a0.jpg" alt="" class="profile_pic_mechanic circle">
-            <div class="mechanic_details_container" ng-cloak>
-              <span class="profile_info_mechanic">{{ mechanic.fullname}}</span>
-              <hr />
-              <p><i class="mdi-communication-email mechanic_details_icon"></i> {{ mechanic.email }}</p>
-              <p><i class="mdi-action-wallet-travel mechanic_details_icon"></i>{{ mechanic.skill }}</p>
-              <p><i class="mdi-communication-call mechanic_details_icon"></i> {{ mechanic.phone_no }}</p>
-              <p><i class="mdi-communication-business mechanic_details_icon"></i> {{ mechanic.organisation }}</p>
-              <p><i class="mdi-action-language mechanic_details_icon"></i> {{ mechanic.location }}</p>
-              <p><i class="mdi-action-event mechanic_details_icon"></i> {{ mechanic.available }}</p>
-              <p><i class="mdi-editor-mode-edit mechanic_details_icon"></i> {{ mechanic.created_at | date:'medium' }}</p>
-              <a href="#!" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
-            </div>
+          <li ng-repeat="mechanic in data | filter: search " class="collection-item avatar" ng-cloak>
+              <img src="images/a0.jpg" alt="" class="circle">
+              <span class="title">{{ mechanic.fullname}}</span>
+              <p class="mechanic_info mechanic_email">{{ mechanic.email }}</p>
+              <p class="mechanic_info mechanic_skill">{{ mechanic.skill }}</p>
+              <p class="mechanic_info mechanic_phone_no">{{ mechanic.phone_no }}</p>
+              <p class="mechanic_info mechanic_organisation">{{ mechanic.organisation }}</p>
+              <p class="mechanic_info mechanic_location">{{ mechanic.location }}</p>
+              <p class="mechanic_info mechanic_avail">{{ mechanic.available }}</p>
+              <p class="mechanic_info mechanic_create">{{ mechanic.created_at | date:'medium' }}</p>
+              <a href="#" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
+              <a href="#" ng-click="deleteMechanic()" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
           </li>
         </ul>
       </div>
     </div>
+  </div>
   </div>
 </div>
 

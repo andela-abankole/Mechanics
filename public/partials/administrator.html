@@ -5,9 +5,10 @@
   <div class="row">
     <div class="col s12 m4 l3 toggle"> 
       <!-- SIDE PANEL -->
-      <div class="card-panel sidebar">
-        <img src="images/a0.jpg" alt="" class="profile_image">
-        <span class="title_name">Min Li Lang</span>
+      <div class="card-panel sidebar" ng-cloak>
+          <img src="images/a0.jpg" alt="" class="profile_image">
+          <span class="title_name">{{ getadminByid.fullname }}</span>
+          <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -28,12 +29,20 @@
     <!-- MAIN PANEL -->
     <div class="col s12 m8 l9 maincontent"> 
       <div id="maincontent_wrapper">
-        <h3><i class="fa fa-angle-right"></i> All Administrator</h3>
+        <div class="header-container">
+          <h3>All Administrator</h3>
+          <div class="total" ng-cloak>{{ data.length }}</div>
+        </div>
         <ul class="collection">
-          <li class="collection-item avatar">
+          <li ng-repeat="admin in data" class="collection-item admin-item avatar">
             <img src="images/a0.jpg" alt="" class="circle">
-            <span class="title">Steve Akhom</span>
-            <p class="admin_username">Stevealkom</p>
+            <span class="title">{{ admin.fullname }}</span>
+            <p class="admin_info admin_id">{{ admin._id}}</p>
+            <p class="admin_info admin_username">{{ admin.username }}</p>
+            <p class="admin_info admin_email">{{ admin.email }}</p>
+            <p class="admin_info admin_Admin">{{ admin.admin }}</p>
+            <a ng-click="deleteAdmin()" href="#" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
+            <a href="#" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
           </li>
         </ul>
       </div>

@@ -5,9 +5,10 @@
   <div class="row">
     <div class="col s12 m4 l3 toggle"> 
       <!-- SIDE PANEL -->
-      <div class="card-panel sidebar">
-        <img src="images/a0.jpg" alt="" class="profile_image">
-        <span class="title_name">Min Li Lang</span>
+      <div class="card-panel sidebar" ng-cloak>
+          <img src="images/a0.jpg" alt="" class="profile_image">
+          <span class="title_name">{{ getadminByid.fullname }}</span>
+          <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -34,7 +35,7 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="mdi-action-account-circle prefix"></i>
-              <input id="fullname" type="text" required ng-model="params.fullname">
+              <input id="fullname" type="text" class="validate" required ng-model="params.fullname">
               <label for="fullname">Full Name</label>
             </div>
           </div>
@@ -42,12 +43,12 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="mdi-action-wallet-travel prefix"></i>
-              <input id="skill" type="text" required ng-model="params.skill">
+              <input id="skill" type="text" class="validate" required ng-model="params.skill">
               <label for="skill">What Can You Do</label>
             </div>
             <div class="input-field col s6">
               <i class="mdi-communication-call prefix"></i>
-              <input id="phone" type="text"  required ng-model="params.phone_no">
+              <input id="phone" type="text" class="validate" required ng-model="params.phone_no">
               <label for="phone">Phone Number | ex. 08029000000</label>
             </div>
           </div>
@@ -55,12 +56,12 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="mdi-communication-email prefix"></i>
-              <input id="email" type="email" required ng-model="params.email">
+              <input id="email" type="email" class="validate" required ng-model="params.email">
               <label for="email">Email Address | example@gmail.com</label>
             </div>
             <div class="input-field col s6">
               <i class="mdi-social-domain prefix"></i>
-              <input id="organisation" type="text" ng-model="params.organisation">
+              <input id="organisation" type="text" class="validate" ng-model="params.organisation">
               <label for="organisation">Company | ex. M&M</label>
             </div>
           </div>
@@ -78,7 +79,7 @@
           <div class="row">
             <div class="input-field col s10">
               <i class="mdi-action-language prefix"></i>
-              <input id="location" type="text" ng-model="params.location">
+              <input id="location" type="text" class="validate" ng-model="params.location">
               <label for="location">Address</label>
             </div>
             <p class="input-field col s2">
