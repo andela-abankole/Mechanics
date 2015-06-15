@@ -1,3 +1,5 @@
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,300,500');
+
 .landing-nav {
   position: fixed;
   z-index: 1000;
@@ -8,7 +10,7 @@
 
 .landing-nav .brand-logo {
   position: relative;
-  padding: 15px;
+  padding: 5px;
   left: 70px;
   color: #000;
 }
@@ -55,7 +57,7 @@ input[type=text].landing-search {
   display: block;
   position: relative;
   width: 50px;
-  top: -5px;
+  top: -10px;
   border-bottom: 8px solid;
   border-radius: 1px;
 }
@@ -74,7 +76,7 @@ input[type=text].landing-search {
 .landing-btn {
   display: inline-table;
   margin-bottom: 18px;
-  right: 2px;
+  right: 10px;
 }
 
 #main {
@@ -94,8 +96,9 @@ input[type=text].landing-search {
 */
 img.tiles{
   height: auto;
-  width: 80px;
-  border-radius: 50%;
+  width: 70px;
+/*  border-radius: 50%;*/
+  border-radius: 75px 75px 0;
   border: 2px solid #ddd;
   float: right;
 }
@@ -106,9 +109,136 @@ img.tiles{
 
 .landing-collection .landing-collection-item {
   border-bottom: 1px solid #e0e0e0 !important;
-  height: 300px !important;
+  height: 470px !important;
 }
 
 .junk {
   color: transparent;
+}
+
+.mechanic-fullname {
+  font-size: 22px;
+  font-family: Roboto;
+  font-weight: bolder;
+  color: rgba(193, 162, 111, 0.66);
+  text-transform: capitalize;
+}
+
+.mechanic-email {
+  font-size: 14px;
+  font-family: Roboto;
+  font-weight: 300;
+  color: #4D4D4D;
+}
+
+.mechanic-email:before {
+  content: 'Email';
+  color: #999999;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+}
+
+.mechanic-skill {
+  font-family: Roboto;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #4D4D4D;
+}
+
+.mechanic-skill:before {
+  content: 'What I Do';
+  color: #999999;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+}
+
+.mechanic-phone {
+  font-family: Roboto;
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.mechanic-phone span {
+  background-color: rgba(75, 112, 131, 0.83);
+  display: inline-block;
+  width: 48px;
+  height: 22px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.mechanic-phone span a {
+  color: #ffffff;
+  padding: 4px;
+  font-size: 12px;
+  font-family: Ruda;
+}
+
+.mechanic-phone:before {
+  content: 'Mobile';
+  color: #999999;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+}
+
+.mechanic-org {
+  font-family: Roboto;
+  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mechanic-org:before {
+  content: 'Works for';
+  color: #999999;
+  font-size: 13px;
+  font-weight: normal;
+  display: block;
+}
+
+.mechanic-address {
+  font-family: Roboto;
+  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.mechanic-address:before {
+  content: 'Address';
+  color: #999999;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+}
+
+.mechanic-avail {
+  font-family: Roboto;
+  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+.mechanic-avail:before {
+  content: 'Available';
+  color: #999999;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+}
+
+#searchmechcollection {
+  margin-top: -6px;
+  margin-left: 25%;
+}
+
+@media only screen and (max-width: 400px){   
+  #searchmechcollection  {
+    margin-top: 28px;
+    margin-left: 16%;
+  }
 }
