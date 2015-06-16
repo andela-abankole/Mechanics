@@ -14,6 +14,8 @@ var mongoose        = require('mongoose');
 var methodOverride  = require('method-override'); //simulate DELETE and PUT
 var config          = require('./config/config'); // get config file
 var routes          = require('./app/routes');
+var cloudinary      = require('cloudinary');
+var fs              = require('fs')
 var port            = process.env.PORT || 3000;  // set port
 
 
@@ -31,6 +33,7 @@ app.use(morgan('dev'));
 
 app.use(methodOverride());
 
+cloudinary.config(config.cloudinary);
 
 // ROUTES =========================================================================
 var router = express.Router(); // get an instance of the express Router
@@ -46,7 +49,7 @@ app.use('/api', router);
 routes(router);
 
 app.get('*', function(req, res) {
-  res.sendFile('./public/index.html'); // load the single view file (angular will handle the page changes on the front end)
+  res.sendFile(process.cwd() + '/public/index.html'); // load the single view file (angular will handle the page changes on the front end)
 });
 
 // START THE SERVER =================================================================
