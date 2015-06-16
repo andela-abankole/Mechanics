@@ -1,8 +1,8 @@
 app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminService', '$state', '$cookies', 'Upload', function($scope, $http, MechanicService, AdminService, $state, $cookies, Upload){
 
-  if(!AdminService.getUser()){
-    $state.go('admin');
-  } 
+  // if(!AdminService.getUser()){
+  //   $state.go('admin');
+  // }
 
   // Get All Admin 
   AdminService.get()
