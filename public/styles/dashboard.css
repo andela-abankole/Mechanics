@@ -1,6 +1,39 @@
 /* Import fonts */
-@import url('http://fonts.googleapis.com/css?family=Ruda:400,700,900');
+/*@import url('http://fonts.googleapis.com/css?family=Ruda:400,700,900');
 @import url('http://fonts.googleapis.com/css?family=Roboto:400,300,500');
+*/
+/*  IMPORTED FONTS */
+
+@font-face {  font-family: "Ruda";
+src: url('/../fonts/Ruda/Ruda-Regular.ttf');}
+
+@font-face {  font-family: "Ruda";
+src: url('../fonts/Ruda/Ruda-Bold.ttf');}
+
+@font-face {  font-family: "Roboto";
+src: url('../fonts/roboto/Roboto-Light.ttf');}
+
+@font-face {  font-family: "Roboto";
+src: url('../fonts/roboto/Roboto-Medium.ttf');}
+
+@font-face {  font-family: "Roboto";
+src: url('../fonts/roboto/Roboto-Regular.ttf');}
+
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar {width: 6px; height: 2px;}
+::-webkit-scrollbar-track {
+  background-color: #ddd;
+  opacity: .2;
+  margin: 2px 0px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4F4F4F;
+  border-radius: 5px;
+}
 
 a {
   color: #000;
@@ -145,7 +178,7 @@ nav .nav-wrapper a {
 }
 
 .collection-item {
-  height: 420px !important;
+  height: 470px !important;
 }
 
 .admin-item {
@@ -279,11 +312,21 @@ nav .nav-wrapper a {
   margin-top: 8px;
 }
 
+.mechanic_update:before {
+  content: 'Updated on';
+  color: #999999;
+  font-weight: normal;
+  font-size: 13px;
+  display: block;
+  margin-top: 8px;
+}
+
 .primary-content {
   position: absolute;
   top: 50px;
   right: 16px;
   width: 25px !important;
+  cursor: pointer;
 }
 
 .logout-btn {
@@ -291,10 +334,10 @@ nav .nav-wrapper a {
   background-color: #ffd777;
   font-family: Ruda;
   text-transform: capitalize;
+  color: #000 !important;
 }
 
-.logout-btn a {
-  color: #000;
+.logout-container a {
   font-size: 12px !important;
   text-align: center;
 }

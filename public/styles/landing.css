@@ -1,5 +1,5 @@
-@import url('http://fonts.googleapis.com/css?family=Roboto:400,300,500');
-
+/*@import url('http://fonts.googleapis.com/css?family=Roboto:400,300,500');
+*/
 .landing-nav {
   position: fixed;
   z-index: 1000;
@@ -79,21 +79,17 @@ input[type=text].landing-search {
   right: 10px;
 }
 
-#main {
-  height: 600px;
-}
-/*
-@media only screen and (max-width: 1280px) and (min-width: 1024px) {
-  .wrap {
-    width: 80%;
+@media only screen and (max-width: 320px) {
+  .btn-floating {
+    width: 50.5px !important;
+    height: 50.5px !important;
   }
 }
 
-.wrap {
-  width: 80%;
-  margin: 0 auto;
+#main {
+  height: 600px;
 }
-*/
+
 img.tiles{
   height: auto;
   width: 70px;
