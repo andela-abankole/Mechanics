@@ -5,6 +5,14 @@ module.exports    = {
     res.json({ message: 'hooray! welcome to our api'});
   },
 
+  upload: function(req, res){  
+    var imageStream = fs.createReadStream(req.files.image.path, { encoding: 'binary' }), 
+    cloudStream = cloudinary.uploader.upload_stream(function() { res.redirect('/'); 
+    });
+
+    imageStream.on('data', cloudStream.write).on('end', cloudStream.end);
+  },
+  
   /**
    * [getAllMechanics: returns all mechanics]
    * @param  {[req]}
@@ -35,15 +43,11 @@ module.exports    = {
       if (err){
         res.send(err);
       } else {
-        //res.json({message: 'Mechanic created!'});
-        Mechanic.find(function(err, mechanics) {
-          if (err) {
-            res.send(err)
-          }
-          else {
-            res.status('Mechanic created successfully!').json(mechanics);
-          }
-        })
+        // return the information including token as JSON
+        res.json({
+          success: true,
+          message: 'Mechanic created!',
+        });
       }
     });
   },
@@ -93,7 +97,7 @@ module.exports    = {
         if (err){
           res.send(err);
         } else {
-          res.json({ message: 'Mechanic updated!'});
+          res.json({ success: false, message: 'Mechanic updated successfully' })
         }
       });
 
@@ -113,15 +117,19 @@ module.exports    = {
       if (err) {
         res.send(err);
       } else {
-      //res.json({ message: 'Successfully deleted' })
-        Mechanic.find(function(err, mechanics) {
-          if (err) {
-            res.send(err)
-          }
-          else {
-            res.status('Successfully deleted').json( mechanics);
-          }
+        res.json({ 
+          success: true,
+          message: 'Successfully deleted' 
         });
+        
+        // Mechanic.find(function(err, mechanics) {
+        //   if (err) {
+        //     res.send(err)
+        //   }
+        //   else {
+        //     res.status('Successfully deleted').json(mechanics);
+        //   }
+        // });
       }
     });
   }
