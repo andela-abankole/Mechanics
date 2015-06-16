@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Mechanic">
 <head>
+  <base href="/" />
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="description" content="">
@@ -39,9 +41,14 @@
   <!-- CONTROLLERS -->
   <script type="text/javascript" src="scripts/controllers/admin.controller.js"></script>
   <script type="text/javascript" src="scripts/controllers/mechanic.controller.js"></script>
+  <script type="text/javascript" src="scripts/controllers/reload.controller.js"></script>
 
   <!-- SERVICES -->
   <script type="text/javascript" src="scripts/services/mechanic.service.js"></script>
   <script type="text/javascript" src="scripts/services/admin.service.js"></script>
+
+  <!-- ANGULAR FILE UPLOAD -->
+  <script type="text/javascript" src="libs/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script type="text/javascript" src="libs/ng-file-upload/ng-file-upload.min.js"></script>
 </body>
 </html>
