@@ -1,6 +1,6 @@
-var app = angular.module('Mechanic', ['ui.router']);
+var app = angular.module('Mechanic', ['ui.router', 'ngCookies', 'ngFileUpload']);
 
-app.config(function($stateProvider, $urlRouterProvider){
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
   $urlRouterProvider.otherwise("/home");
 
   $stateProvider
@@ -64,4 +64,15 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: "/logout",
       templateUrl: 'partials/logout.html'
     });
-});
+  $locationProvider.html5Mode(true);
+});  
+
+app.run(['$rootScope', 'AdminService', '$state', '$location', function($rootScope, AdminService, $state, $location) {
+  $rootScope.$on('$stateChangeStart', function(event, toState){
+    if (AdminService.getUser()){
+       if (toState.templateUrl == 'partials/login.html' || toState.templateUrl == 'partials/signup.html') {
+        $location.path('/dashboard'); 
+      } 
+    }
+  });
+}]);
