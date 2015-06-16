@@ -17,7 +17,7 @@ app.factory('MechanicService', ['$http', function($http){
     updateById : function(id) {
       return $http.put('/api/mechanics/' + id);
     },
-    delete : function(id) {
+    deleteById : function(id) {
       return $http.delete('/api/mechanics/' + id);
     },
   };
