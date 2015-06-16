@@ -1,4 +1,4 @@
-app.factory('AdminService', ['$http', function($http){
+app.factory('AdminService', ['$http', '$cookies', function($http, $cookies){
   return {
     // All Admin
     get : function () {
@@ -15,15 +15,24 @@ app.factory('AdminService', ['$http', function($http){
       return $http.post('/api/authenticate', { username: params.username, password: params.password })
     },
 
+    getUser: function() {
+      var user = $cookies.get('adminID');
+      if (user) {
+        return true;
+      } else {
+        return false;
+      }
+    }, 
+
     // By ID
     getById : function (id) {
-      return $http.get('/api/admin/', id)
+      return $http.get('/api/admin/' + id)
     },
     updateById : function (id) {
       return $http.put('/api/admin/', id)
     },
-    deleteById : function (id) {
-      return $http.delete('/api/admin/', id)
+    deleteById : function (id, sendtoken) {
+      return $http.delete('/api/admin/' + id + sendtoken)
     },
   };
 }])
