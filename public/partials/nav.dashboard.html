@@ -1,17 +1,19 @@
 <!-- NAVBAR FOR DASHBOARD-->
-<nav class="dashboard grey darken-3">
-  <div class="nav-wrapper">
-    <ul class="left">
-      <li><a href="#"><i class="mdi-navigation-more-vert" id="togglebtn"></i></a></li>
-      <li><a ui-sref="dashboard"><i class="mdi-navigation-refresh"></i></a></li>
-    </ul>
-    <a ui-sref="#" class="left nav-brand-logo">MECHANICS | DASHBOARD</a>
-    <div>
-      <div class="right">
-        <button class="waves-effect btn logout-btn"><a ui-sref="logout"> Logout</a></button>
+<div ng-controller="adminController">
+  <nav class="dashboard grey darken-3" ng-controller="reloadController">
+    <div class="nav-wrapper">
+      <ul class="left">
+        <li><a href="#"><i class="mdi-navigation-more-vert" id="togglebtn"></i></a></li>
+        <li><a ng-click="reloadRoute()"><i class="mdi-navigation-refresh"></i></a></li>
+      </ul>
+      <a ui-sref="#" class="left nav-brand-logo">MECHANICS | DASHBOARD</a>
+      <div>
+        <div class="right logout-container">
+          <a ng-click="logout()"><button class="waves-effect btn logout-btn">Logout</button></a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 
 <div ui-view="theView"></div>

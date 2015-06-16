@@ -47,8 +47,9 @@
               <p class="mechanic_info mechanic_location">{{ mechanic.location }}</p>
               <p class="mechanic_info mechanic_avail">{{ mechanic.available }}</p>
               <p class="mechanic_info mechanic_create">{{ mechanic.created_at | date:'medium' }}</p>
+              <p class="mechanic_info mechanic_update">{{ mechanic.updated_at | date:'medium' }}</p>
               <a href="#" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
-              <a href="#" ng-click="deleteMechanic()" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
+              <a ng-click="deleteMechanic(mechanic._id)" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
           </li>
         </ul>
       </div>
