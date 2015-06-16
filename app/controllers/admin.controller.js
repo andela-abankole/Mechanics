@@ -48,7 +48,7 @@ module.exports = {
           var validPassword = admin.comparePassword(req.body.password);
           console.log("password", validPassword);
           if (!validPassword) {
-            res.json({ success: false, message: 'Authentication failed. Wrong password. '});
+            res.json({ success: false, message: 'Authentication failed. Wrong password.'});
           } else {
             /**
              * if user is found and password is right
@@ -61,7 +61,7 @@ module.exports = {
             // return the information including token as JSON
             res.json({
               success: true,
-              message: 'Enjoy your token!',
+              message: 'Successfully Signed in!',
               token: token,
               adminid: admin
             });
@@ -127,7 +127,8 @@ module.exports = {
         if (err){
           res.send(err);
         } else {
-          res.json({ message: 'Admin updated successfully' })
+          //res.json({ message: 'Admin updated successfully' })
+          res.json({ success: true, message: 'Admin updated successfully'});
         }
       });
 
@@ -142,12 +143,13 @@ module.exports = {
    */
   deleteAdminById: function(req, res) {
     Admin.remove({
-      _id: req.params.viewAdmin_id
+      _id: req.params.viewAdmin_id,
+      token: req.params.token
     }, function(err, admin) {
       if (err) {
         res.send(err);
       } else {
-        res.json({ message: 'Admin deleted successfully' })
+        res.json({ success: true, message: 'Admin deleted successfully' })
       }
     });
   }
