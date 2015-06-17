@@ -5,14 +5,6 @@ module.exports    = {
     res.json({ message: 'hooray! welcome to our api'});
   },
 
-  upload: function(req, res){  
-    var imageStream = fs.createReadStream(req.files.image.path, { encoding: 'binary' }), 
-    cloudStream = cloudinary.uploader.upload_stream(function() { res.redirect('/'); 
-    });
-
-    imageStream.on('data', cloudStream.write).on('end', cloudStream.end);
-  },
-  
   /**
    * [getAllMechanics: returns all mechanics]
    * @param  {[req]}

@@ -1,9 +1,26 @@
 var Admin      = require('../models/admin.model');
+var cloudinary = require('cloudinary');
 var jwt        = require('jsonwebtoken');  // used to create, sign, and verify tokens
 var config     = require('../../config/config');      // get our config file
 
 
 module.exports = {
+
+  /**
+   * [upload: Upload Admin Image to cloudinary]
+   * @param  {[req]}
+   * @param  {[res]}
+   * @return {[void]}
+   */
+  upload: function(req, res, next) {
+    if(req.files.file) {
+      var path        = req.files.file.path;
+      cloudinary.uploader.upload(path, function(response){
+        req.imageurl  = response.secure_url;
+        next();
+      },{ width: 400, height: 400, crop: "thumb", format: "png"})
+    }
+  },
 
   /**
    * [createAdmin: Add new admin]
@@ -12,18 +29,19 @@ module.exports = {
    * @return {[void]}
    */
   createAdmin: function(req, res) {
-    var admin = new Admin(req.body);
+    var adminSave   = JSON.parse(req.body.data)
+    var admin       = new Admin(adminSave);
+    admin.imageurl  = req.imageurl
 
     // save the user
-    admin.save(function(err) {
+    admin.save(function(err, response) {
       if (err) {
-        res.send(err)
+        res.json(err);
       } else {
-        // return the information including token as JSON
-        res.json({
-          success: true,
-          message: 'Admin saved successfully!',
-        });
+        return res.json({
+               response: response,
+               success: true,
+               message: 'Admin Successfully created!',});
       };
     });
   },
@@ -117,8 +135,8 @@ module.exports = {
 
       //update the admin info
       admin.fullname    = req.body.fullname;
-      admin.username    = req.body.username;
       admin.email       = req.body.email;
+      admin.username    = req.body.username;
       admin.password    = req.body.password;
       admin.admin       = req.body.admin;
 
