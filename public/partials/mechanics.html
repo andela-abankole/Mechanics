@@ -6,9 +6,9 @@
     <!-- SIDE PANEL -->
     <div class="col s12 m4 l3 toggle"> 
       <div class="card-panel sidebar" ng-cloak>
-          <img src="images/a0.jpg" alt="" class="profile_image">
-          <span class="title_name">{{ getadminByid.fullname }}</span>
-          <p class="admin_side-info">{{ getadminByid.email }}</p>
+        <img ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
+        <span class="title_name">{{ getadminByid.fullname }}</span>
+        <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -23,6 +23,9 @@
           <li>
             <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic">Add Mechanic</a></div>
           </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="signup">Add Admin</a></div>
+          </li>
         </ul>
       </div>
     </div>
@@ -33,7 +36,10 @@
         <div class="header-container">
           <h3>All Mechanic</h3>
           <div class="total">{{ data.length  }}</div>
-          <input type="text" placeholder="search for......" class="searchlistmechanics" ng-model="search.fullname"/>
+          <div>
+            <i class="search-icon mdi-action-search"></i>
+            <input type="text" placeholder="search for......" class="searchlistmechanics" ng-model="search.fullname" />
+          </div>
         </div>
         <ul class="collection">
           <!-- LOOPING THROUGH DATA-->

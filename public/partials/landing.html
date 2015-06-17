@@ -9,10 +9,10 @@
   </div>
 </nav>
 
-<div class="row">
+<div class="row landing_bg">
   <div id="main">
     <!-- SIDE PANEL -->
-    <div class="col s2 m3 l3">
+    <div class="col s2 m3 l2">
       <div class="col s12 m7 l7 junk">
         ..
       </div>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <!-- MAIN PANEL -->
-    <div class="col s9 m7 l6 landing-main_card">
+    <div class="col s9 m7 l8 landing-main_card">
       <div class="wrap">
         <div>
           <ul id="mechcollection" class="collection landing-collection">
@@ -44,13 +44,14 @@
                 <p class="mechanic-avail">{{ mechanic.available }}</p>
               </div>
             </li>
-            <p>© Andela 2015, Made with <i style="color: #F65A5B" class="mdi-action-favorite"></i> by Akinjide Bankole</p>
+            <p>© Andela 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole</p>
           </ul>
         </div>
       </div>
     </div>
 
-    <div style="display:none" id="searchmechcollection" class="col s9 m7 l6 landing-main_card">
+    <!-- SEARCH RESULT -->
+    <div style="display:none" id="searchmechcollection" class="col s9 m7 l8 landing-main_card">
       <div class="wrap">
         <div>
           <ul class="collection landing-collection">
@@ -66,13 +67,14 @@
                 <p class="mechanic-avail">{{ mechanic.available }}</p>
               </div>
             </li>
-            <p>© Andela 2015, Made with <i style="color: #F65A5B" class="mdi-action-favorite"></i> by Akinjide Bankole</p>
+            <li class="no-items">There are no matching mechanics.</li>
+            <p>© Andela 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole</p>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="col s1 m2 l3">
+    <div class="col s1 m2 l2">
 
     </div>
   </div>

@@ -4,9 +4,9 @@
     <!-- SIDE PANEL -->
     <div class="col s12 m4 l3 toggle"> 
       <div class="card-panel sidebar" ng-cloak>
-          <img src="images/a0.jpg" alt="" class="profile_image">
-          <span class="title_name">{{ getadminByid.fullname }}</span>
-          <p class="admin_side-info">{{ getadminByid.email }}</p>
+        <img ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
+        <span class="title_name">{{ getadminByid.fullname }}</span>
+        <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -20,6 +20,9 @@
           </li>
           <li>
             <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic">Add Mechanic</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="signup">Add Admin</a></div>
           </li>
         </ul>
       </div>
@@ -52,12 +55,12 @@
               </div>
             </div>
 
-            <div class="card grey darken-1 mechanic-dashboard">
+            <div class="card mechanic-dashboard">
               <div class="card-content">
                 <span>Logged In Admin</span>
                 <br />
                 <br />
-                <p>You are logged in as <strong>{{ getadminByid.fullname }}</strong></p>
+                <p>You are logged in as <strong> <br />{{ getadminByid.fullname }}</strong></p>
                 <br />
                 <br />
                 <p>{{ getadminByid.email }}</p>
@@ -69,8 +72,8 @@
           <div class="col s12 m4 l4">
             <div class="card grey">
               <div class="card-content white-text">
-                <p class="admintotal">+ {{ data.length }}</p>
-                <i class="mdi-action-account-child admintotalicon"></i>
+                <p class="admintotal">+{{ data.length }}</p>
+                <br />
                 <p>{{ data.length }} Admins are currently working with us</p>
               </div>
             </div>

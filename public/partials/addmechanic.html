@@ -1,14 +1,14 @@
 <!-- CONTROLLER -->
 <div ng-controller="adminController">
 
-  <!-- PAGE LAYOUT  -->
+  <!-- PAGE LAYOUT -->
   <div class="row">
     <div class="col s12 m4 l3 toggle"> 
       <!-- SIDE PANEL -->
       <div class="card-panel sidebar" ng-cloak>
-          <img src="images/a0.jpg" alt="" class="profile_image">
-          <span class="title_name">{{ getadminByid.fullname }}</span>
-          <p class="admin_side-info">{{ getadminByid.email }}</p>
+        <img ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
+        <span class="title_name">{{ getadminByid.fullname }}</span>
+        <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -21,7 +21,10 @@
             <div class="collapsible-header cc_header"><i class="mdi-social-people"></i><a ui-sref="mechanics">Mechanics</a></div>
           </li>
           <li class="active">
-            <div class="collapsible-header cc_header active"><i class="mdi-social-person-add"></i><a href="#">Add Mechanic</a></div>
+            <div class="collapsible-header cc_header active"><i class="mdi-social-person-add"></i><a ui-sref="#">Add Mechanic</a></div>
+          </li>
+          <li>
+            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="signup">Add Admin</a></div>
           </li>
         </ul>
       </div>
