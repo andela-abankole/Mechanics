@@ -7,8 +7,6 @@ module.exports = function (router) {
   // test route to make sure everything is working (accessed at GET http://localhost:3000/api)
   router.get('/', mechanic_Ctrl.getApi);
 
-  router.post('/upload', mechanic_Ctrl.upload);
-
   // on routes that end in /mechanics
   router.route('/mechanics')
     // create a mechanic (accessed at POST http://localhost:3000/api/mechanics)

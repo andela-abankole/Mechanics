@@ -9,7 +9,7 @@ module.exports  = function (router) {
 
   // Registers a new administrator (accessed at GET http://localhost:3000/api/admin/register)
   router.route('/admin/register')
-    .post(Admin_Ctrl.createAdmin)
+    .post(Admin_Ctrl.upload, Admin_Ctrl.createAdmin)
 
   // Authenticates the user details and generates a token (accessed at GET http://localhost:3000/api/authenticate)
   router.route('/authenticate')
