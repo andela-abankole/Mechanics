@@ -1,8 +1,8 @@
 app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminService', '$state', '$cookies', 'Upload', function($scope, $http, MechanicService, AdminService, $state, $cookies, Upload){
 
-  // if(!AdminService.getUser()){
-  //   $state.go('admin');
-  // }
+  if(!AdminService.getUser()){
+    $state.go('admin');
+  }
 
   // Get All Admin 
   AdminService.get()
@@ -11,33 +11,40 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
 
   function getData (data) {
     $scope.data = data;
-    console.log('admin',  $scope.data)
+  };
+ 
+  // Create Admin Account
+  $scope.upload = function(params) { 
+    console.log('button clicked');
+    if(!$.isEmptyObject(params)) {
+      $scope.$watch('params.files', function(data) {
+        Upload.upload({
+          url: '/api/admin/register',
+          file: $scope.params.files[0],
+          data: $scope.params
+        }).progress(function(evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.log = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
+            Materialize.toast($scope.log, 2000);
+          })
+          .success(function(data, status, headers, config) {
+            $scope.file     = JSON.stringify(data.message);
+            $scope.params   = {};
+            Materialize.toast($scope.file, 4000);
+          })
+          .error(function(data, status, headers, config) {
+            $scope.file     = JSON.stringify(data.message);
+            Materialize.toast($scope.file, 2000)
+          });
+      });
+    } else {
+      Materialize.toast('Required! Please fill the form', 2000);
+    };
   };
 
-  // Create Admin Account
-  $scope.createAdmin = function(formAdmin) {
-    console.log('button clicked');
-    if(!$.isEmptyObject(formAdmin)) {
-      AdminService.create(formAdmin)
-        .success(function(formAdmin) {
-          $scope.params   = {};
-          $scope.Admins   = formAdmin;
-          Materialize.toast(formAdmin['message'], 2000);
-          console.log('testing Admins', $scope.Admins)
-        })
-      .error(function(formAdmin) {
-        Materialize.toast(formAdmin['message'], 2000)
-        $scope.params = formAdmin;
-      })
-    } else {
-      console.log('nothing happened')
-      Materialize.toast('REQUIRED! Please fill the form', 2000);
-    }
-  };
 
   // Login Admin
   $scope.login = function(params) {
-    console.log('button clicked');
       AdminService.login(params)
         .success(function(authSuccess) {
           $scope.params         = {};
@@ -47,9 +54,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
               // Change state when user logins in
               Materialize.toast(authSuccess['message'], 2000);
               $scope.adminDetials   = $scope.authSuccess['adminid'];
-              $scope.adminID        = $scope.adminDetials['_id']
-              console.log('details', $scope.adminDetials);
-              console.log("message", $scope.adminID);
+              $scope.adminID        = $scope.adminDetials['_id'];
                
               // Set Admin Unique ID and Token to Cookie
               $cookies.put('adminID', $scope.adminID);
@@ -57,21 +62,19 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
               $state.go('dashboard');
             } else {
               Materialize.toast(authSuccess.message, 2000);
-              console.log('error', authSuccess.success, authSuccess.message);
             };
         })
       .error(function(authSuccess) {
-        Materialize.toast(authSuccess, 2000);
         $scope.authSuccess = authSuccess;
-        console.log($scope.authSuccess);
-      })
-
+        Materialize.toast(authSuccess, 2000);
+      });
   };
+
 
   // Logout
   $scope.logout = function() {
+    $cookies.remove('Admintoken');    
     $cookies.remove('adminID');
-    $cookies.remove('Admintoken');
     $state.go('logout');
     Materialize.toast('Successfully Signed out!', 2000);
   };
@@ -81,7 +84,6 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
     AdminService.getById(id)
       .success(function(getadminByid) {
         $scope.getadminByid    = getadminByid;
-        console.log('adminbyid', getadminByid);
       })
       .error(function(getadminByid) {
         console.log('Error: ' + getadminByid)
@@ -91,16 +93,13 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
   $scope.deleteAdmin = function(id) {
     var token = $cookies.get('Admintoken');
     var sendtoken = '?token=' + token;
-    console.log('token', sendtoken)
     AdminService.deleteById(id, sendtoken)
       .success(function(deleteadminByid) {
         Materialize.toast(deleteadminByid['message'], 2000);
         $scope.deleteadminByid  = deleteadminByid;
-        console.log('success', deleteadminByid);
         $state.reload();
       })
       .error(function(deleteadminByid) {
-        console.log('Error: ' + deleteadminByid);
         Materialize.toast(deleteadminByid['message'], 2000);
       });
   };
@@ -113,7 +112,6 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
 
   // Create A New Mechanic from DashBoard
   $scope.createMechanic = function(data) {
-    console.log('button clicked');
     if(!$.isEmptyObject(data)) {
       MechanicService.create(data)
         .success(function(data) {
