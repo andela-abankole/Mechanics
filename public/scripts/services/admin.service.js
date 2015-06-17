@@ -4,12 +4,7 @@ app.factory('AdminService', ['$http', '$cookies', function($http, $cookies){
     get : function () {
       return $http.get('/api/admin');
     },
-
-    // Register
-    create : function (formAdmin) {
-      return $http.post('/api/admin/register', formAdmin)
-    },
-
+    
     // Authenticate
     login: function(params) {
       return $http.post('/api/authenticate', { username: params.username, password: params.password })
