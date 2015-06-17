@@ -7,7 +7,7 @@ $(document).ready(function(){
       $('.sidebar').css({
         'margin-left': '-210px'
       });
-      $('.toggle > .sidebar').hide(300);
+      $('.toggle > .sidebar').slideUp("slow");
       $("#container").addClass("sidebar-closed");
     } else {
       $('#maincontent_wrapper').css({
@@ -16,7 +16,7 @@ $(document).ready(function(){
       $('.sidebar').css({
         'margin-left': '0'
       });
-      $('.toggle > .sidebar').show(300);
+      $('.toggle > .sidebar').slideDown("slow");
       $("#container").removeClass("sidebar-closed");
     }
   });
