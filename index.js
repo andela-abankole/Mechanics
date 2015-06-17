@@ -15,7 +15,9 @@ var methodOverride  = require('method-override'); //simulate DELETE and PUT
 var config          = require('./config/config'); // get config file
 var routes          = require('./app/routes');
 var cloudinary      = require('cloudinary');
-var fs              = require('fs')
+var fs              = require('fs');
+var multer          = require('multer');
+var path            = require('path');
 var port            = process.env.PORT || 3000;  // set port
 
 
@@ -30,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));  // parse application/vnd.api+json as json
 app.use(morgan('dev'));
+app.use(multer({ dest: './uploads/'}));
 
 app.use(methodOverride());
 
