@@ -1,6 +1,7 @@
-var app = angular.module('Mechanic', ['ui.router', 'ngCookies', 'ngFileUpload']);
+var app = angular.module('Mechanic', ['ui.router', 'ngCookies', 'ngFileUpload', 'angular-loading-bar']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider){
+  cfpLoadingBarProvider.includeSpinner = false;
   $urlRouterProvider.otherwise("/home");
 
   $stateProvider
@@ -14,7 +15,14 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     })
     .state('signup', {
       url: "/signup",
-      templateUrl: "partials/signup.html"
+      views: {
+        '' : {
+          templateUrl: 'partials/nav.signup.html'
+        },
+        'theView@signup': {
+          templateUrl: "partials/signup.html" 
+        }
+      }
     })
     .state('dashboard', {
       url: "/dashboard",
@@ -60,6 +68,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         }
       },
     })
+    .state('lockscreen', {
+      url: "/lockscreen",
+      templateUrl: 'partials/lock_screen.html'
+    })    
     .state('logout', {
       url: "/logout",
       templateUrl: 'partials/logout.html'
@@ -70,7 +82,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 app.run(['$rootScope', 'AdminService', '$state', '$location', function($rootScope, AdminService, $state, $location) {
   $rootScope.$on('$stateChangeStart', function(event, toState){
     if (AdminService.getUser()){
-       if (toState.templateUrl == 'partials/login.html' || toState.templateUrl == 'partials/signup.html') {
+       if (toState.templateUrl == 'partials/login.html' || toState.templateUrl == 'partials/signup.html' || toState.templateUrl == 'partials/logout.html') {
         $location.path('/dashboard'); 
       } 
     }
