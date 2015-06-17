@@ -37,6 +37,9 @@ var adminSchema = new Schema ({
     required: 'password is required'
   },
   admin: Boolean,
+  imageurl: {
+    type: String,
+  },
 });
 
 adminSchema.pre('save', function(next){
