@@ -10,7 +10,7 @@ module.exports = function (router) {
   // on routes that end in /mechanics
   router.route('/mechanics')
     // create a mechanic (accessed at POST http://localhost:3000/api/mechanics)
-    .post(mechanic_Ctrl.createMechanic)
+    .post(mechanic_Ctrl.createMechanic, mechanic_Ctrl.createdbMechanic)
 
     //get all the mechanics (accessed at GET http://localhost:3000/api/mechanics)
     .get(mechanic_Ctrl.getAllMechanics);
