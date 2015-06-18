@@ -1,4 +1,5 @@
 var Mechanic      = require('../models/mechanic.model');
+var cloudinary    = require('cloudinary');
 
 module.exports    = {
   getApi: function(req, res) {
@@ -21,22 +22,35 @@ module.exports    = {
     });
   },
 
+  createMechanic: function(req, res, next) {
+    if(req.files.file) {
+      var path        = req.files.file.path;
+      cloudinary.uploader.upload(path, function(response){
+        req.imageurl  = response.secure_url;
+        next();
+      },{ width: 400, height: 400, crop: "thumb", format: "png"})
+    }
+  },
+
   /**
    * [createMechanic: creates a new mechanic info]
    * @param  {[req]}
    * @param  {[res]}
    * @return {[void]}
    */
-  createMechanic: function(req, res) {
-    var mechanic = new Mechanic(req.body);    // create a new instance of the Mechanic model
+  createdbMechanic: function(req, res) {
+    var mechanicSave = JSON.parse(req.body.data);
+    var mechanic = new Mechanic(mechanicSave);    // create a new instance of the Mechanic model
+    mechanic.imageurl = req.imageurl;
 
     // save the mechanic and check for errors
-    mechanic.save(function(err) {
+    mechanic.save(function(err, response) {
       if (err){
         res.send(err);
       } else {
         // return the information including token as JSON
         res.json({
+          response: response,
           success: true,
           message: 'Mechanic created!',
         });

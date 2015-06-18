@@ -29,9 +29,9 @@ module.exports = {
    * @return {[void]}
    */
   createAdmin: function(req, res) {
-    var adminSave   = JSON.parse(req.body.data)
+    var adminSave   = JSON.parse(req.body.data);
     var admin       = new Admin(adminSave);
-    admin.imageurl  = req.imageurl
+    admin.imageurl  = req.imageurl;
 
     // save the user
     admin.save(function(err, response) {
