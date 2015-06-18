@@ -32,7 +32,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));  // parse application/vnd.api+json as json
 app.use(morgan('dev'));
-app.use(multer({ dest: './uploads/'}));
+app.use(multer({ 
+  dest: './uploads/', 
+  limits: {fileSize: 1024000}, 
+  onFileSizeLimit: function (file) {
+  console.log('Failed: ', file.originalname);
+  fs.unlink('./' + file.path) // delete the partially written file 
+  }
+}));
 
 app.use(methodOverride());
 
