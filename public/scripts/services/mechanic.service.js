@@ -4,12 +4,7 @@ app.factory('MechanicService', ['$http', function($http){
     get : function() {
       return $http.get('/api/mechanics');
     },
-
-    // Register
-    create : function(data) {
-      return $http.post('/api/mechanics', data);
-    },
-
+    
     // By ID
     getById : function(id) {
       return $http.get('/api/mechanics/' + id);

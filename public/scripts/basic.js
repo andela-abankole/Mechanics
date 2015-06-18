@@ -1,8 +1,3 @@
 $(document).ready(function(){ 
-  $("b").keypress(function(){
-    $("#searchmechcollection").css({
-      'display': 'block'
-    })
-  });
-  $('.tooltipped').tooltip({delay: 20});
+  $('.tooltipped').tooltip({delay: 1});
 });

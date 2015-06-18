@@ -19,9 +19,9 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
     if(!$.isEmptyObject(params)) {
       $scope.$watch('params.files', function(data) {
         Upload.upload({
-          url: '/api/admin/register',
-          file: $scope.params.files[0],
-          data: $scope.params
+          url: '/api/admin/register',     // Register
+          file: $scope.params.files[0],   // Image to upload
+          data: $scope.params             // Other Admin details
         }).progress(function(evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             $scope.log = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
@@ -107,27 +107,34 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
 
 
 
-
 // MECHANIC ======================================================
 
   // Create A New Mechanic from DashBoard
-  $scope.createMechanic = function(data) {
-    if(!$.isEmptyObject(data)) {
-      MechanicService.create(data)
-        .success(function(data) {
-          $scope.params     = {};
-          $scope.mechanics  = data;
-          console.log("data", data.success);
-          Materialize.toast(data['message'], 2000);
-        })
-      .error(function(data) {
-      Materialize.toast(data['message'], 2000);
-        $scope.params = data;
-      })
+  $scope.createMechanic = function(params) { 
+    if(!$.isEmptyObject(params)) {
+      $scope.$watch('params.files', function(data) {
+        Upload.upload({
+          url: '/api/mechanics',
+          file: $scope.params.files[0],
+          data: $scope.params
+        }).progress(function(evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            $scope.log = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
+            Materialize.toast($scope.log, 2000);
+          })
+          .success(function(data, status, headers, config) {
+            $scope.file     = JSON.stringify(data.message);
+            $scope.params   = {};
+            Materialize.toast($scope.file, 4000);
+          })
+          .error(function(data, status, headers, config) {
+            $scope.file     = JSON.stringify(data.message);
+            Materialize.toast($scope.file, 2000)
+          });
+      });
     } else {
-      console.log('nothing happened')
-      Materialize.toast('REQUIRED! Please fill the form', 2000);
-    }
+      Materialize.toast('Required! Please fill the form', 2000);
+    };
   };
 
   // Delete Mechanic by ID

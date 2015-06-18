@@ -70,7 +70,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, cfpLo
     })
     .state('lockscreen', {
       url: "/lockscreen",
-      templateUrl: 'partials/lock_screen.html'
+      templateUrl: 'partials/lockscreen.html'
     })    
     .state('logout', {
       url: "/logout",
@@ -85,6 +85,12 @@ app.run(['$rootScope', 'AdminService', '$state', '$location', function($rootScop
        if (toState.templateUrl == 'partials/login.html' || toState.templateUrl == 'partials/signup.html' || toState.templateUrl == 'partials/logout.html') {
         $location.path('/dashboard'); 
       } 
+    }
+
+    if (!AdminService.getUser()) {
+      if (toState.templateUrl == 'partials/lockscreen.html') {
+       $location.path('/admin');
+      }
     }
   });
 }]);
