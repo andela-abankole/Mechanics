@@ -1,0 +1,32 @@
+/*  IMPORTED FONTS */
+
+@font-face {  font-family: "Ruda";
+src: url('/../fonts/Ruda/Ruda-Regular.ttf');}
+
+@font-face {  font-family: "Ruda";
+src: url('../fonts/Ruda/Ruda-Bold.ttf');}
+
+body {
+  background-image: url('../images/loginbg.jpg');
+  background-position: top center;
+  font-family: 'Ruda', sans-serif;
+  color: #fff !important;
+}
+
+#showtime {
+  width: 100%;
+  font-size: 90px;
+  margin-bottom: 30px;
+  margin-top: 160px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 400;
+}
+
+.lock-screen {
+  text-align: center;
+}
+
+h2 a i {
+  color: #fff;
+}

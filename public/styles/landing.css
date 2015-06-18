@@ -1,8 +1,4 @@
-/*@import url('http://fonts.googleapis.com/css?family=Roboto:400,300,500');
-*/
-
-.landing_bg, .landing-collection, .landing-collection-item{
-
+.landing_bg, .landing-collection, .landing-collection-item, body{
   background-color: #f8f8f8 !important;
 }
 
@@ -46,7 +42,7 @@ input[type=text].landing-search {
 
   input[type=text].landing-search {
     width: 80%;
-    margin: -5px 15px 15px 0;
+    margin: -6px 40px 15px 0;
   }
 }
 
@@ -61,7 +57,7 @@ input[type=text].landing-search {
   content: "";
   display: block;
   position: relative;
-  width: 50px;
+  width: 38px;
   top: -10px;
   border-bottom: 8px solid;
   border-radius: 1px;
@@ -84,11 +80,68 @@ input[type=text].landing-search {
   right: 10px;
 }
 
+.social-icon-visit {
+  position: fixed;
+  width: 42px;
+  top: 386px;
+  left: 130px;
+}
+
+.social-icon-visit-2 {
+  position: fixed;
+   width: 70px;
+   top: 326px;
+   left: 115px;
+}
+
+@media (min-width: 600px) {
+  .social-icon-visit {
+    position: fixed;
+    width: 36px;
+    top: 358px;
+    left: 16%;
+  }
+  .social-icon-visit-2 {
+    position: fixed;
+    width: 60px;
+    top: 310px;
+    left: 14.5%;
+  }
+}
+
+@media (min-width: 980px) {
+  .social-icon-visit {
+    position: fixed;
+    width: 36px;
+    top: 366px;
+    left: 10.5%;
+  }
+  .social-icon-visit-2 {
+    position: fixed;
+    width: 60px;
+    top: 320px;
+    left: 9.5%;
+  }
+}
+
 @media (max-width: 600px) {
-  .btn-floating.landing-btn  {
+  .btn-floating.landing-btn {
     width: 48.5px !important;
     height: 48.5px !important;
     margin-left: 8px;
+  }
+  .btn-floating.btn-large i {
+    line-height: 50px;
+  }
+  .social-icon-visit {
+    width: 36px;
+    top: 350px;
+    left: 26px;
+  }
+  .social-icon-visit-2 {
+    width: 60px;
+    top: 300px;
+    left: 13px;
   }
 }
 
@@ -103,6 +156,7 @@ img.tiles{
   border-radius: 75px 75px 0;
   border: 2px solid #A8A8A8;
   float: right;
+  padding: 2px;
 }
 
 .landing-collection {
@@ -164,7 +218,7 @@ img.tiles{
 }
 
 .mechanic-phone span {
-  background-color: rgba(75, 112, 131, 0.83);
+  background-color: rgba(0, 0, 0, 0.7);
   display: inline-block;
   width: 48px;
   height: 22px;
@@ -233,20 +287,31 @@ img.tiles{
   display: block;
 }
 
-#searchmechcollection {
-  margin-top: 2px;
-  margin-left: 16%;
+
+@media only screen and (max-width: 600px){   
+  #landing-searchmech  {
+    margin-top: 8px;
+    margin-left: 16%;  
+  }
 }
 
-@media only screen and (max-width: 400px){   
-  #searchmechcollection  {
-    margin-top: 28px;
+@media (min-width: 600px){   
+  #landing-searchmech  {
+    margin-top: -2px;
+    margin-left: 25%; 
+  }
+}
+
+@media only screen and (min-width: 980px){   
+  #landing-searchmech {
+    margin-top: 2px;
     margin-left: 16%;
   }
 }
 
 .connect-icon {
   color: #ddd;
+  transition: ease in;
   font-size: 18px;
 }
 
@@ -256,4 +321,8 @@ img.tiles{
 
 li + .no-items {
     display: none;
+}
+
+.btn-floating i {
+  color: #000;
 }
