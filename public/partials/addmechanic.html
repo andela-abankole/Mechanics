@@ -6,9 +6,12 @@
     <div class="col s12 m4 l3 toggle"> 
       <!-- SIDE PANEL -->
       <div class="card-panel sidebar" ng-cloak>
-        <img ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
-        <span class="title_name">{{ getadminByid.fullname }}</span>
-        <p class="admin_side-info">{{ getadminByid.email }}</p>
+        <div class="profile">
+          <img ng-cloak ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
+          <a ui-sref="lockscreen" class="profile-control-right"><span class="mdi-action-lock"></span></a>
+        </div>
+        <span ng-cloak class="title_name">{{ getadminByid.fullname }}</span>
+        <p ng-cloak class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
         <ul class="collapsible cc" data-collapsible="accordion">
           <li>
@@ -82,7 +85,10 @@
           </div>
 
           <div class="row">
-            <input style="margin-left: 15px;" type="file" ng-file-select ng-file-change="fileSelected($files)" ng-model="picFile" ng-capture="'camera'|'other'" accept="'image/*'" />
+            <p class="file-info">Maximum upload size 1MB</p>
+            <input style="margin-left: 15px; font-size: 12px;" type="file" ng-model="params.files" accept="'image/*'" ngf-select="true" required/>
+            <br />
+            <img ng-show="params.files[0] != null" ngf-src="params.files[0]" class="thumb" />
           </div>
 
           <button submit class="right btn-floating btn-large waves-effect waves-light blue-grey"><i class="mdi-content-add"></i></button>

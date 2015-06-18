@@ -6,7 +6,10 @@
     <!-- SIDE PANEL -->
     <div class="col s12 m4 l3 toggle"> 
       <div class="card-panel sidebar" ng-cloak>
-        <img ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
+        <div class="profile">
+          <img ng-cloak ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="profile_image">
+          <a ui-sref="lockscreen" class="profile-control-right"><span class="mdi-action-lock"></span></a>
+        </div>
         <span class="title_name">{{ getadminByid.fullname }}</span>
         <p class="admin_side-info">{{ getadminByid.email }}</p>
         <hr />
@@ -36,15 +39,15 @@
         <div class="header-container">
           <h3>All Mechanic</h3>
           <div class="total">{{ data.length  }}</div>
-          <div>
+          <div class="searchdiv">
             <i class="search-icon mdi-action-search"></i>
             <input type="text" placeholder="search for......" class="searchlistmechanics" ng-model="search.fullname" />
           </div>
         </div>
-        <ul class="collection">
+        <ul class="collection allmechanic-collection">
           <!-- LOOPING THROUGH DATA-->
           <li ng-repeat="mechanic in data | filter: search " class="collection-item avatar" ng-cloak>
-              <img src="images/a0.jpg" alt="" class="circle">
+              <img ng-src="{{ mechanic.imageurl }}" alt="" class="circle">
               <span class="title">{{ mechanic.fullname}}</span>
               <p class="mechanic_info mechanic_email">{{ mechanic.email }}</p>
               <p class="mechanic_info mechanic_skill">{{ mechanic.skill }}</p>
