@@ -1,0 +1,27 @@
+<!-- STYLE -->
+<link rel="stylesheet" type="text/css" href="styles/lockscreen.css">
+
+<div class="row">
+  <div class="col s12 m2 l3 junk">..</div>
+  <div class="col s12 m8 l6">
+    <div id="showtime"></div>
+      <div>
+        <div class="lock-screen">
+          <h2><a ui-sref="dashboard"><i class="mdi-action-lock"></i></a></h2>
+          <p>UNLOCK</p>
+        </div>
+      </div>
+  </div>
+  <div class="col s12 m2 l3"></div>
+</div>
+
+<script>
+  var myVar = setInterval(function(){
+    myTimer()
+  }, 1000);
+
+  function myTimer() {
+    var d = new Date();
+    document.getElementById("showtime").innerHTML = d.toLocaleTimeString();
+  }
+</script>
