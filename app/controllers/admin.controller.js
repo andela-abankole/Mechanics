@@ -63,28 +63,28 @@ module.exports = {
         if (!admin) {
           res.json({ success: false, message: 'Authentication failed. Admin not found.' });
         } else if (admin) {
-          var validPassword = admin.comparePassword(req.body.password);
-          console.log("password", validPassword);
-          if (!validPassword) {
-            res.json({ success: false, message: 'Authentication failed. Wrong password.'});
-          } else {
-            /**
-             * if user is found and password is right
-             * create a token
-             */
-            var token = jwt.sign(admin, config.secret, {
-              expiresInMinutes: 1440  // expires in 24 hours
-            });
+            var validPassword = admin.comparePassword(req.body.password);
+            console.log("password", validPassword);
+            if (!validPassword) {
+              res.json({ success: false, message: 'Authentication failed. Wrong password.'});
+            } else {
+              /**
+               * if user is found and password is right
+               * create a token
+               */
+              var token = jwt.sign(admin, config.secret, {
+                expiresInMinutes: 1440  // expires in 24 hours
+              });
 
-            // return the information including token as JSON
-            res.json({
-              success: true,
-              message: 'Successfully Signed in!',
-              token: token,
-              adminid: admin
-            });
+              // return the information including token as JSON
+              res.json({
+                success: true,
+                message: 'Successfully Signed in!',
+                token: token,
+                adminid: admin
+              });
+            };
           };
-        };
        }
     );
   },
