@@ -29,7 +29,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
           })
           .success(function(data, status, headers, config) {
             $scope.file     = JSON.stringify(data.message);
-            $scope.params   = {};
+            $state.reload();
             Materialize.toast($scope.file, 4000);
           })
           .error(function(data, status, headers, config) {
@@ -124,7 +124,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
           })
           .success(function(data, status, headers, config) {
             $scope.file     = JSON.stringify(data.message);
-            $scope.params   = {};
+            $state.reload();
             Materialize.toast($scope.file, 4000);
           })
           .error(function(data, status, headers, config) {
