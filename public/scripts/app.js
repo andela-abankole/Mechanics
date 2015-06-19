@@ -81,7 +81,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, cfpLo
 
 app.run(['$rootScope', 'AdminService', '$state', '$location', function($rootScope, AdminService, $state, $location) {
   $rootScope.$on('$stateChangeStart', function(event, toState){
-    if (AdminService.getUser()){
+    if (AdminService.getUser()) {
        if (toState.templateUrl == 'partials/login.html' || toState.templateUrl == 'partials/signup.html' || toState.templateUrl == 'partials/logout.html') {
         $location.path('/dashboard'); 
       } 

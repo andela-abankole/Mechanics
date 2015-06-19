@@ -15,7 +15,6 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
  
   // Create Admin Account
   $scope.upload = function(params) { 
-    console.log('button clicked');
     if(!$.isEmptyObject(params)) {
       $scope.$watch('params.files', function(data) {
         Upload.upload({
@@ -143,28 +142,23 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
       .success(function(deletemechByid){
         Materialize.toast(deletemechByid['message'], 2000);
         $scope.deletemechByid = deletemechByid;
-        console.log('success', deletemechByid)
         $state.reload();
       })
       .error(function(deletemechByid){
         Materialize.toast(deletemechByid['message'], 2000);
-        console.log('Error:' + deletemechByid)
       });
   };
 
   // Update Mechanic by ID
   $scope.updateMechanic = function(id) {
-    console.log('mechanic id', id)
     MechanicService.updateById(id)
       .success(function(updatemechByid){
         Materialize.toast(updatemechByid['message'], 2000);
         $scope.updatemechByid = updatemechByid;
-        console.log('success', updatemechByid)
         $state.reload();
       })
       .error(function(updatemechByid){
         Materialize.toast(updatemechByid['message'], 2000);
-        console.log('Error:' + updatemechByid)
       });
   };
 }]);
