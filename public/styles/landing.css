@@ -123,6 +123,13 @@ input[type=text].landing-search {
   }
 }
 
+
+@media (min-width: 1500px) {
+  .social-icon-visit {
+    left: 10.1%;
+  }
+}
+
 @media (max-width: 600px) {
   .btn-floating.landing-btn {
     width: 48.5px !important;
