@@ -476,7 +476,11 @@ nav .nav-wrapper a {
   margin-left: 15px;
 }
 
-.searchdiv{
+.searchdiv {
   position: relative;
   top: -35px;
+}
+
+.nav-wrapper .left .mdi-navigation-refresh {
+  cursor: pointer;
 }
