@@ -2,11 +2,11 @@ var app = angular.module('Mechanic', ['ui.router', 'ngCookies', 'ngFileUpload', 
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider){
   cfpLoadingBarProvider.includeSpinner = false;
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise("/");
 
   $stateProvider
     .state('home', {
-      url: "/home",
+      url: "/",
       templateUrl: "partials/landing.html"
     })
     .state('admin', {
