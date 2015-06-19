@@ -326,3 +326,52 @@ li + .no-items {
 .btn-floating i {
   color: #000;
 }
+
+@media (min-width: 768px) {
+  .intro {
+    height: 100%;
+    padding: 0px;
+  }
+}
+
+#about {
+  position: absolute;
+  top: 90px;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  background: url('../images/bg.jpg');
+  -webkit-background-size: cover;
+}
+
+.about-us {
+  text-align: center;
+  color: #fff;
+}
+
+.about-us h2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.about-us h5 {
+  padding-top: 40px;
+}
+
+.about-us strong {
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.about-us .btn {
+  color: rgb(51, 51, 51);
+  font-weight: bolder;
+  background-color: rgb(255, 255, 255);
+}
+
+.about-us .btn:hover {
+  color: rgb(51, 51, 51);
+  background-color: rgba(255, 255, 255, 0.6);
+}
