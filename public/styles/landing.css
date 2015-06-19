@@ -356,25 +356,31 @@ li + .no-items {
   -webkit-background-size: cover;
 }
 
+@media(max-width: 600px) {
+  #about {
+  top: 88px;
+}
+}
+
 .about-us {
   text-align: center;
   color: #fff;
+  padding-top: 60px !important;
 }
 
-.about-us h2 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: 60px;
-  font-weight: bold;
-}
-
-.about-us h5 {
-  padding-top: 40px;
+.about-us h4 {
+  padding-top: 50px;
 }
 
 .about-us strong {
   font-weight: bolder;
-  font-size: 16px;
+  font-size: 24px;
+  font-family: Ruda;
+}
+
+.about-us p {
+  font-size: 18px;
+  font-family: Ruda;
 }
 
 .about-us .btn {
