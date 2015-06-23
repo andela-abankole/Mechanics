@@ -18,7 +18,7 @@ module.exports = {
       cloudinary.uploader.upload(path, function(response){
         req.imageurl  = response.secure_url;
         next();
-      },{ width: 400, height: 400, crop: "thumb", format: "png"})
+      },{ width: 400, height: 400, crop: "thumb", allowed_formats: ['jpg', 'gif', 'png'], format: "png"})
     }
   },
 
