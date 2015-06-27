@@ -3,7 +3,7 @@
 ### v0.1
 
 ## About 
-Mechanics application helps connect people with faulty car to a mechanic, created using MEAN Stack And Materialize, (visit [here](http://andela-abankole.github.io/GitBit) for more).
+Mechanics application helps connect people with faulty car to a mechanic, created using MEAN Stack And Materialize, (visit [here](http://themechanics.co) for more).
 
 #### Authors 
 [Akinjide Bankole](https://github.com/andela-abankole)
