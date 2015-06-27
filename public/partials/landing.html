@@ -1,16 +1,22 @@
 <!-- CONTROLLER -->
 <div ng-controller="mechanicController">
+
   <!-- NAVBAR -->
   <nav class="landing-nav">
    <div class="landing-nav-wrapper">
     <a ui-sref="home" class="brand-logo"><img class="logo" src="images/logo.jpeg"><span class="logo-title">Mechanics</span></a>
+
     <!-- SEARCH FIELD -->
-    <b><input style="display: none" type="text" id="searchinput" placeholder="What's The Problem?" class="landing-search" ng-model="q.skill"/></b>
+    <b>
+      <input style="display: none" type="text" id="searchinput" placeholder="What's The Problem?" class="landing-search" ng-model="q.skill"/>
+    </b>
+
   </div>
 </nav>
 
-<div class="row landing_bg">
-  <div id="main">
+<div class="row">
+  <!-- <div id="main"> -->
+
     <!-- SIDE PANEL -->
     <div class="col s2 m3 l2">
       <div class="col s12 m7 l7 junk">
@@ -23,21 +29,24 @@
           <button id="activemechanics" class="landing-btn right btn-floating btn-large waves-effect waves-light white tooltipped" data-position="right" data-tooltip="All Mechanic"><i class="mdi-social-people"></i></button>
           <br />
           <!-- SEARCH BUTTON -->
-          <button id="activesearch" class="landing-btn right btn-floating btn-large waves-effect waves-light white tooltipped" data-position="right" data-tooltip="Search Mechanic"><i class="mdi-action-search"></i> </button>
+          <button id="activesearch" class="landing-btn right btn-floating btn-large waves-effect waves-light white tooltipped" data-position="right" data-tooltip="Search Mechanic"><i class="mdi-action-search"></i></button>
 
-          <a href="mailto:jidebankole70@gmail.com"><img class="social-icon-visit-2 tooltipped" src="images/social-2.png" data-position="right" data-tooltip="Mail Us"></a>
-          <a target="_blank" href="https://twitter.com/JideBhanks"><img class="social-icon-visit tooltipped" src="images/social-1.png" data-position="right" data-tooltip="Follow Us"></a>
+          <div class="social-media-icon-wrapper">
+            <a target="_blank" href="https://twitter.com/JideBhanks"><img class="social-icon-visit tooltipped" src="images/social-1.png" data-position="right" data-tooltip="Follow Me"></a>
+            <a href="mailto:jidebankole70@gmail.com"><img class="social-icon-visit tooltipped" src="images/social-2.png" data-position="right" data-tooltip="Mail Me"></a>
+          </div>
         </div>
       </div>
     </div>
+
     <!-- MAIN PANEL -->
     <div class="col s9 m7 l8 landing-main_card">
       <div class="wrap">
         <div>
           <ul id="mechcollection" class="collection landing-collection">
             <li ng-repeat="mechanic in data" class="collection-item landing-collection-item">
-              <img class="tiles" ng-src="{{ mechanic.imageurl }}" alt="">
-              <div class="" ng-cloak>
+              <img class="tiles" ng-src="{{ mechanic.imageurl }}" title="{{ mechanic.fullname }} Picture" alt="{{ mechanic.fullname }} Picture">
+              <div ng-cloak>
                 <p class="mechanic-fullname">{{ mechanic.fullname}}</p>
                 <p class="mechanic-email">{{ mechanic.email }}</p>
                 <p class="mechanic-skill">{{ mechanic.skill }}</p>
@@ -47,13 +56,13 @@
                 <p class="mechanic-avail">{{ mechanic.available }}</p>
               </div>
             </li>
-            <p>© Copyright 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole from Andela </p>
+            <p>&copy Copyright 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole from Andela </p>
           </ul>
         </div>
       </div>
     </div>
 
-    <section style="display:none" id="about">
+<!--     <section style="display:none" id="about">
       <div class="row">
         <div class="col m2 l2 junk">..</div>
         <div class="col s12 m8 l8 about-us">
@@ -68,28 +77,32 @@
         </div>
         <div class="col m2 l2"></div>
       </div>
-    </section>
+    </section> -->
 
     <div style="display: none" id="landing-searchmech" class="col s9 m7 l8 ">
-          <ul class="collection landing-collection">
-            <li ng-repeat="mechanic in data | filter: q" class="collection-item landing-collection-item">
-              <img class="tiles" ng-src="{{ mechanic.imageurl }}" alt="">
-              <div class="" ng-cloak>
-                <p class="mechanic-fullname">{{ mechanic.fullname}}</p>
-                <p class="mechanic-email">{{ mechanic.email }}</p>
-                <p class="mechanic-skill">{{ mechanic.skill }}</p>
-                <p class="mechanic-phone">{{ mechanic.phone_no }}<span><a href="tel:{{ mechanic.phone_no}}"><i class="mdi-communication-call"></i> call</a></span></p>
-                <p class="mechanic-org">{{ mechanic.organisation }}</p>
-                <p class="mechanic-address">{{ mechanic.location }}</p>
-                <p class="mechanic-avail">{{ mechanic.available }}</p>
-              </div>
-            </li>
-            <p>© Copyright 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole from Andela </p>
-          </ul>
+      <ul class="collection landing-collection">
+        <li ng-repeat="mechanic in data | filter: q" class="collection-item landing-collection-item">
+          <img class="tiles" ng-src="{{ mechanic.imageurl }}" alt="">
+          <div class="" ng-cloak>
+            <p class="mechanic-fullname">{{ mechanic.fullname}}</p>
+            <p class="mechanic-email">{{ mechanic.email }}</p>
+            <p class="mechanic-skill">{{ mechanic.skill }}</p>
+            <p class="mechanic-phone">{{ mechanic.phone_no }}<span><a href="tel:{{ mechanic.phone_no}}"><i class="mdi-communication-call"></i> call</a></span></p>
+            <p class="mechanic-org">{{ mechanic.organisation }}</p>
+            <p class="mechanic-address">{{ mechanic.location }}</p>
+            <p class="mechanic-avail">{{ mechanic.available }}</p>
+          </div>
+        </li>
+        <li class="no-items" ng-cloak>
+          <i class="mdi-action-search"></i>
+          <h3>We couldn't find any matching mechanic '{{ q.skill }}'</h3>
+          <p>You could try again with keyword search</p>
+        </li>
+      </ul>
     </div>
 
     <div class="col s1 m2 l2"></div>
-  </div>
+<!--   </div> -->
 </div>
 
 <!-- SCRIPT -->
