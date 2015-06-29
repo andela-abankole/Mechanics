@@ -55,7 +55,6 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
               $scope.adminDetials   = $scope.authSuccess['adminid'];
               $scope.adminID        = $scope.adminDetials['_id'];
               $scope.adminStatus    = $scope.adminDetials['admin']
-              console.log('admin', $scope.adminStatus);
 
               // Set Admin Unique ID and Token to Cookie
               $cookies.put('adminID', $scope.adminID);
@@ -93,8 +92,10 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
   
   // Delete Admin by ID
   $scope.deleteAdmin = function(id) {
-    var status      = $cookies.get('AdminStatus')
-    if(status === true){ 
+    var status      = $cookies.get('AdminStatus');
+    console.log($cookies.get('AdminStatus'));
+    console.log(typeof(status));
+    if(String(status) === "true"){ 
       var token     = $cookies.get('Admintoken');
       var sendtoken = '?token=' + token;
       AdminService.deleteById(id, sendtoken)
