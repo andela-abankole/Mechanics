@@ -36,7 +36,7 @@ var adminSchema = new Schema ({
     type: String, 
     required: 'password is required'
   },
-  admin: { type: Boolean, default: 'false'},
+  admin: { type: Boolean, default: false},
   imageurl: {
     type: String,
     default: 'images/default.png',
