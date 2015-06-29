@@ -35,6 +35,7 @@ var mechanicSchema  = new Schema({
   available: Boolean,
   imageurl: {
     type: String,
+    default: 'images/default.png',
   },
   created_at: { 
     type: Date, 
