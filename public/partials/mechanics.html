@@ -23,12 +23,13 @@
           <li>
             <div class="collapsible-header cc_header active"><i class="mdi-social-people"></i><a ui-sref="#">Mechanics</a></div>
           </li>
-          <li>
-            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic">Add Mechanic</a></div>
-          </li>
-          <li>
-            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="signup">Add Admin</a></div>
-          </li>
+          <ul class="collapsible cc_collapse" data-collapsible="expandable">
+            <li>
+              <div class="collapsible-header cc_collapse_title"><i class="mdi-device-storage"></i> Manage</div>
+              <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic"> Add Mechanic</a></div>
+              <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
+            </li>
+          </ul>
         </ul>
       </div>
     </div>
@@ -67,5 +68,6 @@
   </div>
 </div>
 
-  <!-- SCRIPT -->
-  <script type="text/javascript" src="scripts/togglenav.js"></script>
+<!-- SCRIPT -->
+<script type="text/javascript" src="scripts/togglenav.js"></script>
+<script type="text/javascript" src="scripts/basic.js"></script>

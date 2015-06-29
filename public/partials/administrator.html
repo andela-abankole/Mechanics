@@ -23,12 +23,13 @@
           <li>
             <div class="collapsible-header cc_header"><i class="mdi-social-people"></i><a ui-sref="mechanics">Mechanics</a></div>
           </li>
-          <li>
-            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic">Add Mechanic</a></div>
-          </li>
-          <li>
-            <div class="collapsible-header cc_header"><i class="mdi-social-person-add"></i><a ui-sref="signup">Add Admin</a></div>
-          </li>
+          <ul class="collapsible cc_collapse" data-collapsible="expandable">
+            <li>
+              <div class="collapsible-header cc_collapse_title"><i class="mdi-device-storage"></i> Manage</div>
+              <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic"> Add Mechanic</a></div>
+              <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
+            </li>
+          </ul>
         </ul>
       </div>
     </div>
@@ -47,7 +48,8 @@
             <p class="admin_info admin_username">{{ admin.username }}</p>
             <p class="admin_info admin_email">{{ admin.email }}</p>
             <p class="admin_info admin_Admin">{{ admin.admin }}</p>
-            <a class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
+            <a class="secondary-content modal-trigger" href="#modal"><img class="responsive-img" src="images/wrench.png"></a>            
+            <a ng-click="deleteAdmin(admin._id)" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
           </li>
         </ul>
       </div>
@@ -57,3 +59,4 @@
 
 <!-- SCRIPT -->
 <script type="text/javascript" src="scripts/togglenav.js"></script>
+<script type="text/javascript" src="scripts/basic.js"></script>
