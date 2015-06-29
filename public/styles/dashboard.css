@@ -1,5 +1,4 @@
 /*  IMPORTED FONTS */
-
 @font-face {  font-family: "Ruda";
 src: url('/../fonts/Ruda/Ruda-Regular.ttf');}
 
@@ -16,7 +15,6 @@ src: url('../fonts/roboto/Roboto-Medium.ttf');}
 src: url('../fonts/roboto/Roboto-Regular.ttf');}
 
 /* SCROLL BAR */
-
 ::-webkit-scrollbar {width: 4px; height: 2px;}
 ::-webkit-scrollbar-track {
   background-color: #ddd;
@@ -29,7 +27,9 @@ src: url('../fonts/roboto/Roboto-Regular.ttf');}
   background-color: #4F4F4F;
   border-radius: 5px;
 }
+/* SCROLL BAR END*/
 
+/*GENERAL*/
 a {
   color: #000;
 }
@@ -49,7 +49,9 @@ h3 {
   font-weight: 500;
   color: #797979;
 }
+/*GENERAL END*/
 
+/*NAVBAR*/
 nav.dashboard {
   box-shadow: none;
   border-bottom: 2px solid #FFFFFF;
@@ -59,11 +61,33 @@ nav.dashboard {
   z-index: 1002;
 }
 
+nav .nav-wrapper .nav-brand-logo {
+  padding-right: 20px;
+  margin-top: 3px;
+}
+
+.nav-brand-logo {
+  cursor: default;
+}
+
 nav .nav-wrapper a {
   font-size: 16px;
   font-weight: bolder;
 }
 
+@media only screen and (min-width: 601px) {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+    height: 52px;
+    line-height: 45px;
+  }
+}
+
+.nav-wrapper .left {
+  cursor: pointer;
+}
+/*NAVBAR END*/
+
+/*SIDEBAR */
 .sidebar {
   background-color: #393A3E;
   position: fixed;
@@ -74,12 +98,6 @@ nav .nav-wrapper a {
   margin-top: 50px;
   z-index: 800;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.maincontent {  
-  margin-left: 240px !important;
-  margin-top: 60px;
-  width: 80% !important;
 }
 
 .profile_image {
@@ -99,7 +117,7 @@ nav .nav-wrapper a {
   position: relative;
 }
 
-.profile-control-right span{
+.profile-control-right span {
   font-size: 16px;
   color: #EDEDED;
   border: 2px solid #EDEDED;
@@ -107,7 +125,7 @@ nav .nav-wrapper a {
   padding: 5px;
 }
 
-.title_name{
+.title_name {
   display: block;
   text-align: center;
   color: #f2f2f2;
@@ -117,6 +135,18 @@ nav .nav-wrapper a {
   margin-bottom: 10px;
 }
 
+.admin_info, .mechanic_info {
+  color: #666;
+  font-size: 12px;
+}
+
+.admin_side-info {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: -10px;
+}
+
 .cc {
   margin-top: 10px;
   border-top: none;
@@ -124,15 +154,6 @@ nav .nav-wrapper a {
   border-left: none;
   padding: 10px;
   box-shadow: none;
-}
-
-[type="checkbox"]:checked+label:before {
-  border-right: 2px solid #607D8B;
-  border-bottom: 2px solid #607D8B;
-}
-
-[type="checkbox"]+label {
-  margin-top: 20px;
 }
 
 .cc_header {
@@ -148,22 +169,72 @@ nav .nav-wrapper a {
   font-size: 13px;
 }
 
-.cc li a:hover {
+.cc li a:hover, .cc_collapse_title:hover {
   color: #fff;
 }
 
-.admin_info, .mechanic_info {
-  color: #666;
-  font-size: 12px;
+.cc_collapse {
+  margin-top: -14px;
+  margin-left: -10px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding: 10px;
+  box-shadow: none;
+}
+
+.cc_collapse_header {
+  background-color: transparent;
+  border-bottom: none;
+  margin-bottom: 10px;
+  margin-left: 23px;
+  color: #aeb2b7;
+}
+
+.cc_collapse_title {
+  background-color: transparent;
+  border-bottom: none;
+  margin-bottom: 4px;
+  color: #aeb2b7;
+  font-size: 13px;
+}
+/*SIDEBAR END*/
+
+/*GLOBAL*/
+.active {
+  color: #ffd777;
+}
+/*GLOBAL END*/
+
+/*MAIN PANEL*/
+.maincontent {  
+  margin-left: 240px !important;
+  margin-top: 60px;
+  width: 80% !important;
+}
+
+.card-title {
+  text-transform: uppercase;
+  font-weight: bolder !important;
+  font-size: 18px !important;
+}
+
+.card-content p {
+  text-align: center;
+}
+
+.card-content .admintotal {
+  font-size: 70px;
+  margin-bottom: -35px !important;
+}
+
+[type="checkbox"]+label {
+  margin-top: 10px;
 }
 
 .title {
   font-size: 14px;
   font-weight: bolder;
-}
-
-.active {
-  color: #ffd777;
 }
 
 .ds {
@@ -197,16 +268,20 @@ nav .nav-wrapper a {
   margin-left: 130px !important;
 }
 
+.search-icon {
+  position: relative;
+  color: #aaa !important;
+  top: 55px;
+  left: 100px;
+  font-size: 25px;
+}
+
 .collection-item {
   height: 470px !important;
 }
 
 .admin-item {
   height: 260px !important;
-}
-
-.nav-brand-logo {
-  cursor: default;
 }
 
 .mechanic_details_container {
@@ -218,127 +293,49 @@ nav .nav-wrapper a {
   font-family: Roboto;
   font-weight: 400;
 }
+  /*ADMIN DETAILS *BEFORE* */
+  .admin_id:before {
+    content: 'Unique ID';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.admin_side-info {
-  text-align: center;
-  color: #999;
-  font-size: 12px;
-  margin-top: -10px;
-}
+  .admin_username:before {
+    content: 'Username';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.admin_id:before {
-  content: 'Unique ID';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
+  .admin_email:before {
+    content: 'Email';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.admin_username:before {
-  content: 'Username';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.admin_email:before {
-  content: 'Email';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.admin_Admin:before {
-  content: 'Admin';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
+  .admin_Admin:before {
+    content: 'Admin';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
+  /*ADMIN DETAILS END *BEFORE* */
 
 .secondary-content {
   width: 30px !important;
   position: absolute;
   top: 16px;
   right: 16px;
-}
-
-.mechanic_email:before {
-  content: 'Email';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_skill:before {
-  content: 'Speciality';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_phone_no:before {
-  content: 'Mobile';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_organisation:before {
-  content: 'Works for';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_location:before {
-  content: 'Address';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_avail:before {
-  content: 'Available';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_create:before {
-  content: 'Joined on';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
-}
-
-.mechanic_update:before {
-  content: 'Updated on';
-  color: #999999;
-  font-weight: normal;
-  font-size: 13px;
-  display: block;
-  margin-top: 8px;
 }
 
 .primary-content {
@@ -349,43 +346,81 @@ nav .nav-wrapper a {
   cursor: pointer;
 }
 
-.logout-btn {
-  margin: 0px 28px;
-  background-color: #ffd777;
-  font-family: Ruda;
-  text-transform: capitalize;
-  color: #000 !important;
-}
+  /*MECHANICS DETAILS *BEFORE* */
+  .mechanic_email:before {
+    content: 'Email';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.logout-container a {
-  font-size: 12px !important;
-  text-align: center;
-}
+  .mechanic_skill:before {
+    content: 'Speciality';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.logout-btn:focus {
-  outline: none;
-  background-color: #E8BF5D;
-}
+  .mechanic_phone_no:before {
+    content: 'Mobile';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.logout-btn:hover {
-  background-color: #E8BF5D;
-}
+  .mechanic_organisation:before {
+    content: 'Works for';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.card-title {
-  text-transform: uppercase;
-  font-weight: bolder !important;
-  font-size: 18px !important;
-}
+  .mechanic_location:before {
+    content: 'Address';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.card-content p {
-  text-align: center;
-}
+  .mechanic_avail:before {
+    content: 'Available';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
-.card-content .admintotal {
-  font-size: 70px;
-  margin-bottom: -35px !important;
-}
+  .mechanic_create:before {
+    content: 'Joined on';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
 
+  .mechanic_update:before {
+    content: 'Updated on';
+    color: #999999;
+    font-weight: normal;
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
+  /*MECHANICS DETAILS END *BEFORE* */
+
+/*DASHBOARD*/
 .mechanic-dashboard {
   background-color: rgba(31, 106, 197, 0.62) !important;
   color: #000 !important;
@@ -396,7 +431,9 @@ nav .nav-wrapper a {
   font-size: 26px;
   font-weight: bold; 
 }
+/*DASHBOARD END*/
 
+/*PICTURE PREVIEW*/
 .thumb {
   width: 50px;
   height: 50px;
@@ -404,68 +441,63 @@ nav .nav-wrapper a {
   top: 7px;
   left: 18px;
 }
+/*PICTURE PREVIEW END*/
 
-.search-icon {
-  position: relative;
-  color: #aaa !important;
-  top: 55px;
-  left: 100px;
-  font-size: 25px;
-}
+  /*LOADING BAR*/
+    /* Make clicks pass-through */
+    #loading-bar {
+      pointer-events: none;
+      -webkit-pointer-events: none;
+      -webkit-transition: 350ms linear all;
+      -moz-transition: 350ms linear all;
+      -o-transition: 350ms linear all;
+      transition: 350ms linear all;
+    }
 
-/* Make clicks pass-through */
-#loading-bar {
-  pointer-events: none;
-  -webkit-pointer-events: none;
-  -webkit-transition: 350ms linear all;
-  -moz-transition: 350ms linear all;
-  -o-transition: 350ms linear all;
-  transition: 350ms linear all;
-}
+    #loading-bar.ng-enter,
+    #loading-bar.ng-leave.ng-leave-active {
+      opacity: 0;
+    }
 
-#loading-bar.ng-enter,
-#loading-bar.ng-leave.ng-leave-active {
-  opacity: 0;
-}
+    #loading-bar.ng-enter.ng-enter-active,
+    #loading-bar.ng-leave {
+      opacity: 1;
+    }
 
-#loading-bar.ng-enter.ng-enter-active,
-#loading-bar.ng-leave {
-  opacity: 1;
-}
+    #loading-bar .bar {
+      -webkit-transition: width 350ms;
+      -moz-transition: width 350ms;
+      -o-transition: width 350ms;
+      transition: width 350ms;
 
-#loading-bar .bar {
-  -webkit-transition: width 350ms;
-  -moz-transition: width 350ms;
-  -o-transition: width 350ms;
-  transition: width 350ms;
+      background: #ffd777;
+      position: fixed;
+      z-index: 10002;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-bottom-right-radius: 1px;
+      border-top-right-radius: 1px;
+    }
 
-  background: #ffd777;
-  position: fixed;
-  z-index: 10002;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  border-bottom-right-radius: 1px;
-  border-top-right-radius: 1px;
-}
-
-/* Fancy blur effect */
-#loading-bar .peg {
-  position: absolute;
-  width: 70px;
-  right: 0;
-  top: 0;
-  height: 8px;
-  /*opacity: .45;*/
-  -moz-box-shadow: #ffd777 1px 0 6px 1px;
-  -ms-box-shadow: #ffd777 1px 0 6px 1px;
-  -webkit-box-shadow: #ffd777 1px 0 6px 1px;
-  box-shadow: #ffd777 1px 0 6px 1px;
-  -moz-border-radius: 100%;
-  -webkit-border-radius: 100%;
-  border-radius: 100%;
-}
+    /* Fancy blur effect */
+    #loading-bar .peg {
+      position: absolute;
+      width: 70px;
+      right: 0;
+      top: 0;
+      height: 8px;
+      /*opacity: .45;*/
+      -moz-box-shadow: #ffd777 1px 0 6px 1px;
+      -ms-box-shadow: #ffd777 1px 0 6px 1px;
+      -webkit-box-shadow: #ffd777 1px 0 6px 1px;
+      box-shadow: #ffd777 1px 0 6px 1px;
+      -moz-border-radius: 100%;
+      -webkit-border-radius: 100%;
+      border-radius: 100%;
+    }
+    /*LOADING BAR END*/
 
 .allmechanic-collection {
   margin: -1.5rem 0 1rem 0;
@@ -480,7 +512,4 @@ nav .nav-wrapper a {
   position: relative;
   top: -35px;
 }
-
-.nav-wrapper .left .mdi-navigation-refresh {
-  cursor: pointer;
-}
+/*MAIN PANEL END*/
