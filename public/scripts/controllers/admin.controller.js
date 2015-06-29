@@ -54,10 +54,12 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
               Materialize.toast(authSuccess['message'], 2000);
               $scope.adminDetials   = $scope.authSuccess['adminid'];
               $scope.adminID        = $scope.adminDetials['_id'];
-               
+              $scope.adminStatus    = $scope.adminDetials['admin']
+
               // Set Admin Unique ID and Token to Cookie
               $cookies.put('adminID', $scope.adminID);
               $cookies.put('Admintoken', authSuccess.token);
+              $cookies.put('AdminStatus', $scope.adminStatus)
               $state.go('dashboard');
             } else {
               Materialize.toast(authSuccess.message, 2000);
@@ -79,31 +81,34 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
   };
 
   // Get Admin By ID
-   var id = $cookies.get('adminID');
-    AdminService.getById(id)
-      .success(function(getadminByid) {
-        $scope.getadminByid    = getadminByid;
-      })
-      .error(function(getadminByid) {
-        console.log('Error: ' + getadminByid)
-      });
+  var id = $cookies.get('adminID');
+  AdminService.getById(id)
+    .success(function(getadminByid) {
+      $scope.getadminByid    = getadminByid;
+    })
+    .error(function(getadminByid) {
+      console.log('Error: ' + getadminByid)
+    });
   
   // Delete Admin by ID
   $scope.deleteAdmin = function(id) {
-    var token = $cookies.get('Admintoken');
-    var sendtoken = '?token=' + token;
-    AdminService.deleteById(id, sendtoken)
-      .success(function(deleteadminByid) {
-        Materialize.toast(deleteadminByid['message'], 2000);
-        $scope.deleteadminByid  = deleteadminByid;
-        $state.reload();
-      })
-      .error(function(deleteadminByid) {
-        Materialize.toast(deleteadminByid['message'], 2000);
-      });
+    var status    = $cookies.get('AdminStatus')
+    if(status){ 
+      var token = $cookies.get('Admintoken');
+      var sendtoken = '?token=' + token;
+      AdminService.deleteById(id, sendtoken)
+        .success(function(deleteadminByid) {
+          Materialize.toast(deleteadminByid['message'], 2000);
+          $scope.deleteadminByid  = deleteadminByid;
+          $state.reload();
+        })
+        .error(function(deleteadminByid) {
+          Materialize.toast(deleteadminByid['message'], 2000);
+        });
+    } else {
+      Materialize.toast('Unable to Delete', 2000);
+    }
   };
-
-
 
 
 // MECHANIC ======================================================
