@@ -127,15 +127,6 @@ module.exports    = {
           success: true,
           message: 'Successfully deleted' 
         });
-        
-        // Mechanic.find(function(err, mechanics) {
-        //   if (err) {
-        //     res.send(err)
-        //   }
-        //   else {
-        //     res.status('Successfully deleted').json(mechanics);
-        //   }
-        // });
       }
     });
   }
