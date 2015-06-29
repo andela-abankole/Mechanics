@@ -48,8 +48,8 @@
             <p class="admin_info admin_username">{{ admin.username }}</p>
             <p class="admin_info admin_email">{{ admin.email }}</p>
             <p class="admin_info admin_Admin">{{ admin.admin }}</p>
-            <a class="secondary-content modal-trigger" href="#modal"><img class="responsive-img" src="images/wrench.png"></a>            
-            <a ng-click="deleteAdmin(admin._id)" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
+            <a class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>            
+            <a ng-show="admin.admin === false" ng-click="deleteAdmin(admin._id)" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
           </li>
         </ul>
       </div>
