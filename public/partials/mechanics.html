@@ -55,7 +55,7 @@
               <p class="mechanic_info mechanic_phone_no">{{ mechanic.phone_no }}</p>
               <p class="mechanic_info mechanic_organisation">{{ mechanic.organisation }}</p>
               <p class="mechanic_info mechanic_location">{{ mechanic.location }}</p>
-              <p class="mechanic_info mechanic_avail">{{ mechanic.available }}</p>
+              <p class="mechanic_info mechanic_avail">{{ mechanic.available | checkmark }}</p>
               <p class="mechanic_info mechanic_create">{{ mechanic.created_at | date:'medium' }}</p>
               <p class="mechanic_info mechanic_update">{{ mechanic.updated_at | date:'medium' }}</p>
               <a href="#" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
