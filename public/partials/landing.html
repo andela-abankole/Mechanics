@@ -53,10 +53,10 @@
                 <p class="mechanic-phone">{{ mechanic.phone_no }}<span><a href="tel:{{ mechanic.phone_no}}"><i class="mdi-communication-call"></i> call</a></span></p>
                 <p class="mechanic-org">{{ mechanic.organisation }}</p>
                 <p class="mechanic-address">{{ mechanic.location }}</p>
-                <p class="mechanic-avail">{{ mechanic.available }}</p>
+                <p class="mechanic-avail">{{ mechanic.available | checkmark }}</p>
               </div>
             </li>
-            <p>&copy Copyright 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole from Andela </p>
+            <p class="footer-details">&copy Copyright 2015, Made with <i class="connect-icon mdi-action-favorite"></i> by Akinjide Bankole from Andela </p>
           </ul>
         </div>
       </div>
@@ -89,7 +89,7 @@
             <p class="mechanic-phone">{{ mechanic.phone_no }}<span><a href="tel:{{ mechanic.phone_no}}"><i class="mdi-communication-call"></i> call</a></span></p>
             <p class="mechanic-org">{{ mechanic.organisation }}</p>
             <p class="mechanic-address">{{ mechanic.location }}</p>
-            <p class="mechanic-avail">{{ mechanic.available }}</p>
+            <p class="mechanic-avail">{{ mechanic.available  | checkmark }}</p>
           </div>
         </li>
         <li class="no-items" ng-cloak>
