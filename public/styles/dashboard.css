@@ -97,7 +97,10 @@ nav .nav-wrapper a {
   height: 100%;
   margin-top: 50px;
   z-index: 800;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  -moz-box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  -o-box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5);
 }
 
 .profile_image {
@@ -187,8 +190,14 @@ nav .nav-wrapper a {
   background-color: transparent;
   border-bottom: none;
   margin-bottom: 10px;
-  margin-left: 23px;
+  font-size: 10px;
+  margin-left: 28px;
   color: #aeb2b7;
+}
+
+.cc_collapse_header i {
+  padding-right: 12px;
+  font-size: 14px
 }
 
 .cc_collapse_title {
@@ -293,6 +302,41 @@ nav .nav-wrapper a {
   font-family: Roboto;
   font-weight: 400;
 }
+
+.dashboard-card-content {
+  height: 300px;
+}
+
+.collection .collection-item.avatar .dashboard-image {
+  width: 50px;
+  height: auto;
+}
+
+p.dashboard-admin-detail {
+  text-align: right;
+  font-size: 26px;
+}
+
+p.dashboard-fullname {
+  font-weight: bolder;
+  text-transform: uppercase; 
+}
+
+p.dashboard-email {
+  font-size: 18px;
+  color: #eee;
+}
+
+
+.dashboard-id {
+  font-size: 16px !important;
+}
+
+.dashboard-card-content .card-content>.collection, .dashboard-card-content .card-content>.collection>.collection-item{
+  border: none; 
+  height: 300px !important;
+  padding: none !important;
+}
   /*ADMIN DETAILS *BEFORE* */
   .admin_id:before {
     content: 'Unique ID';
@@ -322,7 +366,7 @@ nav .nav-wrapper a {
   }
 
   .admin_Admin:before {
-    content: 'Admin';
+    content: 'Position';
     color: #999999;
     font-weight: normal;
     font-size: 13px;
@@ -511,5 +555,15 @@ nav .nav-wrapper a {
 .searchdiv {
   position: relative;
   top: -35px;
+}
+
+.submit-button {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+}
+
+.fixed-action-btn ul li {
+  margin-bottom: -8px;
 }
 /*MAIN PANEL END*/
