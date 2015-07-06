@@ -36,7 +36,7 @@ module.exports = {
     // save the user
     admin.save(function(err, response) {
       if (err) {
-        res.json(err);
+        res.json({err: err});
       } else {
         return res.json({
                response: response,
