@@ -320,7 +320,7 @@ img.tiles {
   }
 
   .mechanic-avail:before {
-    content: 'Available';
+    content: 'Availability';
     color: #999999;
     font-weight: normal;
     font-size: 13px;
@@ -447,7 +447,7 @@ li + .no-items {
 
 @media(max-width: 600px) {
   #about {
-    top: 68px;
+    top: 0;
   }
 }
 
@@ -481,5 +481,9 @@ li + .no-items {
 .about-us .btn:hover {
   color: rgb(51, 51, 51);
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-details {
+  margin-top: 30px;
 }
 /*ABOUT END*/
