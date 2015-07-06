@@ -9,4 +9,4 @@ app.controller('mechanicController', ['$scope', '$http', 'MechanicService', func
     $scope.data = data;
   };
 
-}])
+}]);
