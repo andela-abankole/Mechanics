@@ -11,6 +11,12 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
 
   function getData (data) {
     $scope.data = data;
+    var checkadmin = $cookies.get('AdminStatus');
+    if (checkadmin === 'true') {
+      $scope.currentadmin = checkadmin;
+    } else {
+      console.log('false')
+    }
   };
  
   // Create Admin Account
@@ -32,8 +38,9 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
             Materialize.toast($scope.file, 4000);
           })
           .error(function(data, status, headers, config) {
-            $scope.file     = JSON.stringify(data.message);
-            Materialize.toast($scope.file, 2000)
+            $scope.err     = JSON.stringify(data.err);
+            console.log('message', $scope.err);
+            Materialize.toast($scope.err + '! A user with that username or email already exists', 3000)
           });
       });
     } else {
@@ -92,12 +99,10 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
   
   // Delete Admin by ID
   $scope.deleteAdmin = function(id) {
-    var status      = $cookies.get('AdminStatus');
-    console.log($cookies.get('AdminStatus'));
-    console.log(typeof(status));
+    var status       = $cookies.get('AdminStatus');
     if(String(status) === "true"){ 
-      var token     = $cookies.get('Admintoken');
-      var sendtoken = '?token=' + token;
+      var token      = $cookies.get('Admintoken');
+      var sendtoken  = '?token=' + token;
       AdminService.deleteById(id, sendtoken)
         .success(function(deleteadminByid) {
           Materialize.toast(deleteadminByid['message'], 2000);
@@ -108,7 +113,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
           Materialize.toast(deleteadminByid['message'], 2000);
         });
     } else {
-      Materialize.toast('Unable to Delete', 2000);
+      Materialize.toast('Unable to Delete, Please contact Admin if you want to delete your account', 2000);
     }
   };
 
