@@ -59,7 +59,7 @@
               <p class="mechanic_info mechanic_create">{{ mechanic.created_at | date:'medium' }}</p>
               <p class="mechanic_info mechanic_update">{{ mechanic.updated_at | date:'medium' }}</p>
               <a href="#" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
-              <a ng-click="deleteMechanic(mechanic._id)" class="primary-content"><img class="responsive-img" src="images/cancel.png"></a>
+              <a ng-click="deleteMechanic(mechanic._id)" class="primary-content"><i class="mdi-action-delete"></i></a>
           </li>
         </ul>
       </div>
