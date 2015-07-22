@@ -8,5 +8,4 @@ app.controller('mechanicController', ['$scope', '$http', 'MechanicService', func
   function getData (data) {
     $scope.data = data;
   };
-
 }]);
