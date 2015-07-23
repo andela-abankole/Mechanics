@@ -13,12 +13,14 @@ module.exports = {
    * @return {[void]}
    */
   upload: function(req, res, next) {
-    if(req.files.file) {
+    if (req.files && req.files.file) {
       var path        = req.files.file.path;
       cloudinary.uploader.upload(path, function(response){
         req.imageurl  = response.secure_url;
         next();
       },{ width: 400, height: 400, crop: "thumb", allowed_formats: ['jpg', 'gif', 'png'], format: "png"})
+    } else {
+      next();
     }
   },
 
@@ -128,24 +130,30 @@ module.exports = {
    * @return {[void]}
    */
   putAdminById: function(req, res) {
-    Admin.findById(req.params.viewAdmin_id, function(err, admin) {
+    var adminUpdate     = JSON.parse(req.body.data);
+    Admin.findById({
+      _id: req.params.viewAdmin_id,
+      token: req.params.token
+    }, function(err, admin) {
       if (err) {
         res.send(err);
       }
 
-      //update the admin info
-      admin.fullname    = req.body.fullname;
-      admin.email       = req.body.email;
-      admin.username    = req.body.username;
-      admin.password    = req.body.password;
-      admin.admin       = req.body.admin;
+      // update the admin info
+      admin.fullname    = adminUpdate.fullname;
+      admin.email       = adminUpdate.email;
+      admin.username    = adminUpdate.username;
+      admin.password    = adminUpdate.password;
+      admin.admin       = adminUpdate.admin;
+      if (req.imageurl) {
+        admin.imageurl = req.imageurl;
+      };
 
-      //save the Admin
+      // save the Admin
       admin.save(function(err) {
-        if (err){
+        if (err) {
           res.send(err);
         } else {
-          //res.json({ message: 'Admin updated successfully' })
           res.json({ success: true, message: 'Admin updated successfully'});
         }
       });
