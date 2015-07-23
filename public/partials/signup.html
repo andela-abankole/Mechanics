@@ -27,7 +27,7 @@
             <li>
               <div class="collapsible-header cc_collapse_title active"><i class="mdi-device-storage"></i> Manage</div>
               <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic"> Add Mechanic</a></div>
-              <div class="collapsible-body cc_collapse_header active"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
+              <div ng-show="currentadmin === 'true'" class="collapsible-body cc_collapse_header active"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
             </li>
           </ul>
         </ul>
