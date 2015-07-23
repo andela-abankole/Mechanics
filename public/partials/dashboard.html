@@ -25,7 +25,7 @@
             <li>
               <div class="collapsible-header cc_collapse_title"><i class="mdi-device-storage"></i> Manage</div>
               <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic"> Add Mechanic</a></div>
-              <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
+              <div ng-show="currentadmin === 'true'" class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
             </li>
           </ul>
         </ul>
@@ -36,26 +36,53 @@
     <div class="col s12 m8 l9 maincontent"> 
       <div id="maincontent_wrapper">
         <div class="col s12 m12 l12 ds">
-          <div class="col s12 m4 l4">
-            <div class="card">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="images/port03.jpg">
-              </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Mechanic | Developers<i class="mdi-navigation-more-vert right"></i></span>
-                <p><a href="http://twitter.com/JideBhanks">Visit Twitter Page</a></p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Mechanic | Developers<i class="mdi-navigation-close right"></i></span>
-                <p>Welcome ......</p>
-                <p>We save lives everyday with this app so, please make sure you do something today before you leave this dashboard</p>
-              </div>
+
+        <div class="col s12 m5 l5">
+          <div class="card white dashboard-card-content">
+            <div class="card-content">
+          <ul class="collection">
+              <li class="collection-item avatar">
+                <img ng-cloak ng-src="{{ getadminByid.imageurl }}" title="{{ getadminByid.fullname }} picture" alt="{{ getadminByid.fullname }} picture" class="circle dashboard-image">
+<!--                 <p class="dashboard-admin-detail dashboard-fullname">{{ getadminByid.fullname }}</p>
+                <p class="dashboard-admin-detail dashboard-email">{{ getadminByid.email }}</p>
+                <p class="dashboard-admin-detail">{{ getadminByid.username }}</p>
+                <p class="dashboard-admin-detail  dashboard-id">{{ getadminByid._id  }}</p>
+                <p class="dashboard-admin-detail">{{ getadminByid.admin | status }}</p> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+        </div>
+
+        <div class="col s12 m3 l3">
+          <div class="card grey">
+            <div class="card-content white-text">
+              <p class="admintotal">+{{ data.length }}</p>
+              <br />
+              <p>{{ data.length }} Admins are currently working with us</p>
             </div>
           </div>
+
+          <div class="card mechanic-dashboard">
+            <div class="card-content">
+              <span>Logged In Admin</span>
+              <br />
+              <br />
+              <p>You are logged in as <strong> <br />{{ getadminByid.fullname }}</strong></p>
+              <br />
+              <br />
+              <p>{{ getadminByid.email }}</p>
+              <p></p>
+            </div>
+          </div>
+        </div>
+
           <div class="col s12 m4 l4">
-            <div class="card">
-              <div class="card-image white-text">
-                <img class="activator" src="images/port04.jpg">
+            <div class="card grey">
+              <div class="card-content white-text">
+                <p class="admintotal">+{{ data.length }}</p>
+                <br />
+                <p>{{ data.length }} Admins are currently working with us</p>
               </div>
             </div>
 
@@ -69,16 +96,6 @@
                 <br />
                 <p>{{ getadminByid.email }}</p>
                 <p></p>
-              </div>
-            </div>
-
-          </div>
-          <div class="col s12 m4 l4">
-            <div class="card grey">
-              <div class="card-content white-text">
-                <p class="admintotal">+{{ data.length }}</p>
-                <br />
-                <p>{{ data.length }} Admins are currently working with us</p>
               </div>
             </div>
           </div>
