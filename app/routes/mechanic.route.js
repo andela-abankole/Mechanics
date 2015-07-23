@@ -22,7 +22,7 @@ module.exports = function (router) {
 
 
     // update the mechanic with this id (accessed at PUT http://localhost:3000/api/mechanics/:mechanic_id)
-    .put(mechanic_Ctrl.putMechanicById)
+    .put(mechanic_Ctrl.createMechanic, mechanic_Ctrl.putMechanicById)
 
     // deletes the mechanic with this id (accessed at PUT http://localhost:3000/api/mechanics/:mechanic_id)
     .delete(mechanic_Ctrl.deleteMechanicById);

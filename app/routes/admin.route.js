@@ -29,7 +29,7 @@ module.exports  = function (router) {
   // on routes that end in /mechanics/:viewAdmin_id
   router.route('/admin/:viewAdmin_id')
     // updates the admin with ID (accessed at GET http://localhost:3000/api/admin/:viewAdmin_id)
-    .put(Admin_Ctrl.putAdminById)
+    .put(Admin_Ctrl.upload, Admin_Ctrl.putAdminById)
 
     // deletes the admin with ID (accessed at GET http://localhost:3000/api/admin/:viewAdmin_id)
     .delete(Admin_Ctrl.deleteAdminById);
