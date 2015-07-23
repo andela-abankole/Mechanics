@@ -27,7 +27,7 @@
             <li>
               <div class="collapsible-header cc_collapse_title"><i class="mdi-device-storage"></i> Manage</div>
               <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="addmechanic"> Add Mechanic</a></div>
-              <div class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
+              <div ng-show="currentadmin === 'true'" class="collapsible-body cc_collapse_header"><i class="mdi-social-person-add"></i><a ui-sref="signup"> Add Admin</a></div>
             </li>
           </ul>
         </ul>
@@ -58,10 +58,70 @@
               <p class="mechanic_info mechanic_avail">{{ mechanic.available | checkmark }}</p>
               <p class="mechanic_info mechanic_create">{{ mechanic.created_at | date:'medium' }}</p>
               <p class="mechanic_info mechanic_update">{{ mechanic.updated_at | date:'medium' }}</p>
-              <a href="#" class="secondary-content"><img class="responsive-img" src="images/wrench.png"></a>
-              <a ng-click="deleteMechanic(mechanic._id)" class="primary-content"><i class="mdi-action-delete"></i></a>
+              <a href="" class="modal-trigger secondary-content" ng-click="editMechanic(mechanic._id)"><img class="responsive-img" src="images/wrench.png"></a>
+              <a ng-show="currentadmin === 'true'" ng-click="deleteMechanic(mechanic._id)" class="primary-content"><i class="mdi-action-delete"></i></a>
           </li>
         </ul>
+      </div>
+
+      <!-- Modal Structure -->
+      <div id="editMechanic" class="modal bottom-sheet">
+        <div class="modal-content">
+          <h3>Update Profile</h3>
+        </div>
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-action-account-circle prefix"></i>
+              <input id="fullname" placeholder="Full Name" type="text" required ng-model="params.fullname">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="mdi-notification-play-install prefix"></i>
+              <input id="skill" placeholder="What Can You Do" type="text" class="validate" required ng-model="params.skill">
+            </div>
+            <div class="input-field col s6">
+              <i class="mdi-communication-call prefix"></i>
+              <input id="phone" placeholder="Phone Number | e.g. 08029000000" type="text" class="validate" required ng-model="params.phone_no">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="mdi-communication-email prefix"></i>
+              <input id="email" placeholder="Email Address | example@gmail.com" type="email" required ng-model="params.email" />
+            </div>
+            <div class="input-field col s6">
+              <i class="mdi-social-location-city prefix"></i>
+              <input id="organisation" placeholder="Company | e.g. M &amp; M" type="text" class="validate" ng-model="params.organisation">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s9">
+              <i class="mdi-action-language prefix"></i>
+              <input id="location" placeholder="Address" type="text" class="validate" ng-model="params.location">
+            </div>
+            <p class="input-field col s3">
+              <input type="checkbox" id="available" ng-model="params.available" />
+              <label for="available">Availabe</label>
+            </p>
+          </div>
+
+          <div class="row">
+            <p class="file-info">Maximum upload size 1MB</p>
+            <input style="margin-left: 15px; font-size: 12px;" type="file" ng-model="params.files" accept="'image/*'" ngf-select="true" ngf-max-size='1024000' required />
+            <br />
+            <img ngf-src="params.files[0]" ng-src="{{ params.imageurl }}" class="thumb" />
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Discard</a>
+
+            <a ng-click="updateMechanic(params)" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+          </div>
+        </form>
       </div>
     </div>
   </div>
