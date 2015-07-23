@@ -1,6 +1,6 @@
 app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminService', '$state', '$cookies', 'Upload', function($scope, $http, MechanicService, AdminService, $state, $cookies, Upload){
 
-  if(!AdminService.getUser()){
+  if (!AdminService.getUser()) {
     $state.go('admin');
   }
 
@@ -21,7 +21,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
  
   // Create Admin Account
   $scope.upload = function(params) { 
-    if(!$.isEmptyObject(params)) {
+    if (!$.isEmptyObject(params)) {
       $scope.$watch('params.files', function(data) {
         Upload.upload({
           url: '/api/admin/register',     // Register
@@ -29,7 +29,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
           data: $scope.params             // Other Admin details
         }).progress(function(evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            $scope.log = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
+            $scope.log = 'Uploading Image: ' + progressPercentage + '%';
             Materialize.toast($scope.log, 2000);
           })
           .success(function(data, status, headers, config) {
@@ -48,7 +48,6 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
     };
   };
 
-
   // Login Admin
   $scope.login = function(params) {
       AdminService.login(params)
@@ -63,7 +62,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
               $scope.adminID        = $scope.adminDetials['_id'];
               $scope.adminStatus    = $scope.adminDetials['admin']
 
-              // Set Admin Unique ID and Token to Cookie
+              // Set Admin Unique ID, Status and Token to Cookie
               $cookies.put('adminID', $scope.adminID);
               $cookies.put('Admintoken', authSuccess.token);
               $cookies.put('AdminStatus', $scope.adminStatus)
@@ -83,6 +82,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
   $scope.logout = function() {
     $cookies.remove('Admintoken');    
     $cookies.remove('adminID');
+    $cookies.remove('AdminStatus');
     $state.go('logout');
     Materialize.toast('Successfully Signed out!', 2000);
   };
@@ -96,13 +96,59 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
     .error(function(getadminByid) {
       console.log('Error: ' + getadminByid)
     });
-  
+
+  /**
+   * [status&token Define cookies here and status]
+   * @type {[Global]}
+   */
+  var status      = $cookies.get('AdminStatus'),
+      token       = $cookies.get('Admintoken'),
+      sendtoken   = '?token=' + token,
+      currentTime = Date.now;
+
+  // Edit Admin by ID
+  $scope.editAdmin = function(id) {
+    // activates modal services
+    $('#editAdmin').openModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .7, // Opacity of modal background
+    });
+
+    if (String(status) === "true") { 
+      AdminService.getById(id)
+        .success(function(response){
+          $scope.params = response;
+        })
+    };
+  };
+
+  // Update Admin by ID
+  $scope.updateAdmin = function(params) {
+    if (String(status) === "true") {
+      if (typeof $scope.params.files === 'undefined') { 
+        $scope.params.files = [{}];
+      }
+
+      Upload.upload({
+        url: 'api/admin/' + params._id + sendtoken,
+        method: 'PUT',
+        data: $scope.params,
+        file: $scope.params.files[0]
+      }).progress(function(evt) {
+          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          $scope.log = 'Uploading Image: ' + progressPercentage + '%';
+          Materialize.toast($scope.log, 2000);
+      })
+      .success(function(data, status, headers, config) {
+        $state.reload();
+        Materialize.toast(data.message, 2000);
+      })
+    };
+  };
+
   // Delete Admin by ID
   $scope.deleteAdmin = function(id) {
-    var status       = $cookies.get('AdminStatus');
-    if(String(status) === "true"){ 
-      var token      = $cookies.get('Admintoken');
-      var sendtoken  = '?token=' + token;
+    if (String(status) === "true") { 
       AdminService.deleteById(id, sendtoken)
         .success(function(deleteadminByid) {
           Materialize.toast(deleteadminByid['message'], 2000);
@@ -114,7 +160,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
         });
     } else {
       Materialize.toast('Unable to Delete, Please contact Admin if you want to delete your account', 2000);
-    }
+    };
   };
 
 
@@ -122,7 +168,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
 
   // Create A New Mechanic from DashBoard
   $scope.createMechanic = function(params) { 
-    if(!$.isEmptyObject(params)) {
+    if (!$.isEmptyObject(params)) {
       $scope.$watch('params.files', function(data) {
         Upload.upload({
           url: '/api/mechanics',
@@ -130,7 +176,7 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
           data: $scope.params
         }).progress(function(evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            $scope.log = 'progress: ' + progressPercentage + '% ' + evt.config.file.name;
+            $scope.log = 'Uploading Image: ' + progressPercentage + '%';
             Materialize.toast($scope.log, 2000);
           })
           .success(function(data, status, headers, config) {
@@ -148,6 +194,46 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
     };
   };
 
+  // Edit Mechanic by ID
+  $scope.editMechanic = function(id) {
+    // activates modal services
+    $('#editMechanic').openModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .7, // Opacity of modal background
+    });
+
+    if (String(status) === "true" || String(status) === "false") { 
+      MechanicService.getById(id)
+        .success(function(response){
+          $scope.params = response;
+        })
+    }
+  };
+
+  // Update Mechanic by ID
+  $scope.updateMechanic = function(params) {
+    if (String(status) === "true" || String(status) === "false") {
+      if (typeof $scope.params.files === 'undefined') {
+        $scope.params.files = [{}];
+      };
+
+      Upload.upload({
+        url: 'api/mechanics/' + params._id + sendtoken,
+        method: 'PUT',
+        data: $scope.params,
+        file: $scope.params.files[0]
+      }).progress(function(evt) {
+        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+        $scope.log = 'Uploading Image: ' + progressPercentage + '%';
+        Materialize.toast($scope.log, 2000);
+      })
+      .success(function(data, status, headers, config) {
+        $state.reload();
+        Materialize.toast(data.message, 2000);
+      })
+    };
+  };
+
   // Delete Mechanic by ID
   $scope.deleteMechanic = function(id) {
     MechanicService.deleteById(id)
@@ -158,19 +244,6 @@ app.controller('adminController', ['$scope', '$http', 'MechanicService', 'AdminS
       })
       .error(function(deletemechByid){
         Materialize.toast(deletemechByid['message'], 2000);
-      });
-  };
-
-  // Update Mechanic by ID
-  $scope.updateMechanic = function(id) {
-    MechanicService.updateById(id)
-      .success(function(updatemechByid){
-        Materialize.toast(updatemechByid['message'], 2000);
-        $scope.updatemechByid = updatemechByid;
-        $state.reload();
-      })
-      .error(function(updatemechByid){
-        Materialize.toast(updatemechByid['message'], 2000);
       });
   };
 }]);
