@@ -9,9 +9,10 @@ app.factory('MechanicService', ['$http', function($http){
     getById : function(id) {
       return $http.get('/api/mechanics/' + id);
     },
-    updateById : function(id) {
-      return $http.put('/api/mechanics/' + id);
-    },
+      // Not using this "PUT" Method
+      updateById : function(id) {
+        return $http.put('/api/mechanics/' + id);
+      },
     deleteById : function(id) {
       return $http.delete('/api/mechanics/' + id);
     },

@@ -23,9 +23,10 @@ app.factory('AdminService', ['$http', '$cookies', function($http, $cookies){
     getById : function (id) {
       return $http.get('/api/admin/' + id)
     },
-    updateById : function (id, sendtoken) {
-      return $http.put('/api/admin/' + id + sendtoken)
-    },
+      // Not using this "PUT" Method
+      updateById : function (id, sendtoken) {
+        return $http.put('/api/admin/' + id + sendtoken)
+      },
     deleteById : function (id, sendtoken) {
       return $http.delete('/api/admin/' + id + sendtoken)
     },
